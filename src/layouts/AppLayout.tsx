@@ -1,34 +1,22 @@
 import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
-import Logo from "@/components/Logo";
-import NavMenu from "@/components/NavMenu";
+import Header from "@/components/header/Header";
+import Footer from "@/components/footer/Footer";
+import Sidebar from "@/components/aside/Sidebar";
 
 export default function AppLayout() {
   return (
     <>
-      <div className="grid grid-rows-3">
-        <header className="py-2">
-          <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center">
-            <div className="w-32">
-              <Logo />
-            </div>
-            <NavMenu />
-          </div>
-        </header>
-        <section className="container mx-auto mt-8 p-4">
-          <div className="grid grid-cols-2">
-            <div>sidebar</div>
+      <div className="h-screen flex flex-col">
+        <Header />
+        <section className="flex flex-1">
+          <Sidebar />
+          <main>
             <Outlet />
-          </div>
+          </main>
         </section>
-        <footer className="py-4">
-          <div className="flex flex-col items-center">
-            <p>kitchen by.. a la huevona..!!</p>
-            <p>todos los derechos reservados alimentate sanamente come frutas y verduras {new Date().getFullYear()}</p>
-          </div>
-        </footer>
-
+        <Footer />
         <ToastContainer
           pauseOnHover={false}
           pauseOnFocusLoss={false}
