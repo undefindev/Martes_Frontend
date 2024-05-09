@@ -8,11 +8,11 @@ import Sidebar from "@/components/aside/Sidebar";
 export default function AppLayout() {
   return (
     <>
-      <div className="h-screen flex flex-col">
+      <div className="h-screen grid grid-rows-[auto_1fr_auto]">
         <Header />
-        <section className="flex flex-1">
+        <section className="flex">
           <Sidebar />
-          <main>
+          <main className="md:flex flex-1 md:overflow-y-scroll">
             <Outlet />
           </main>
         </section>
