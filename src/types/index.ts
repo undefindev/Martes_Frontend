@@ -20,4 +20,4 @@ export const dashboardProjectSchema = z.array(
 
 /* esto es para no generar diferentes schema */
 export type Project = z.infer<typeof projectSchema>
-export type ProjectFormData = Pick<Project, 'projectName' | 'clientName' | 'description'>
+export type ProjectFormData = Pick<Project, 'clientName' | 'projectName' | 'description'>
