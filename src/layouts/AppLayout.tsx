@@ -12,7 +12,7 @@ export default function AppLayout() {
         <Header />
         <section className="flex">
           <Sidebar />
-          <main className="md:flex flex-1 md:overflow-y-scroll">
+          <main className="md:flex flex-1 md:overflow-y-scroll px-4">
             <Outlet />
           </main>
         </section>

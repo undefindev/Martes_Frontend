@@ -19,8 +19,8 @@ export default function CreateProjectView() {
 
   const { mutate } = useMutation({ // hicimos destructuring y eliminamos el mutation
     mutationFn: createProject,
-    onError: () => {
-
+    onError: (error) => {
+      toast.error(error.message)
     },
     onSuccess: (data) => {
       toast.success(data)
