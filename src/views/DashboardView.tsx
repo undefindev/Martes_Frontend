@@ -16,16 +16,19 @@ export default function DashboardView() {
 
   if (data) return (
     <>
-      <h2 className="text-4xl font-black">Mis Proyectos</h2>
-      <p className="text-xl font-light text-gray-500">Maneja y Administra tus Malditos Proyectos.. cuyeyo..!!</p>
-
-      <nav className="my-4">
-        <Link
-          to='/projects/create'
-          className="border border-slate-500 rounded-lg hover:bg-slate-900 px-8 py-2 hover:text-white text-xl hove:font-bold cursor-pointer transition-colors">
-          Nuevo Proyecto
-        </Link>
-      </nav>
+      <div className='flex items-center justify-around'>
+        <div>
+          <h2 className="text-4xl font-black">Mis Proyectos</h2>
+          <p className="text-xl font-light text-gray-500">He aqui los Malditos Proyectos.. cuyeyo..!!</p>
+        </div>
+        <nav className="my-4">
+          <Link
+            to='/projects/create'
+            className="border border-slate-500 rounded-lg hover:bg-slate-900 px-8 py-2 hover:text-white text-xl hove:font-bold cursor-pointer transition-colors">
+            Nuevo Proyecto
+          </Link>
+        </nav>
+      </div>
       {data.length ? (
         <ul role="list" className="divide-y divide-gray-100 border border-gray-100 mt-10 bg-white shadow-lg">
           {data.map((project) => (
