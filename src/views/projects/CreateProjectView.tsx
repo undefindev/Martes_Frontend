@@ -31,7 +31,7 @@ export default function CreateProjectView() {
   const handleForm = (formData: ProjectFormData) => mutate(formData) // una sola linea en el arrowFunction no ocupa las llaves
   return (
     <>
-      <div className="max-w-md mx-auto">
+      <div className="max-w-96 mx-auto">
         <h2 className="text-4xl">Crear Proyecto</h2>
         <nav className="mt-4">
           <Link

@@ -1,13 +1,16 @@
 import ProjectForm from "./ProjectForm";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { ProjectFormData } from "@/types/index";
+import { Project, ProjectFormData } from "@/types/index";
+import { useMutation } from "@tanstack/react-query";
+import { updateProject } from "@/api/ProjectAPI";
 
 type EditProjectFormProps = {
   data: ProjectFormData
+  projectId: Project['_id']
 }
 
-export default function EditProjectForm({ data }: EditProjectFormProps) {
+export default function EditProjectForm({ data, projectId }: EditProjectFormProps) {
   /* console.log(data) */
 
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -18,8 +21,22 @@ export default function EditProjectForm({ data }: EditProjectFormProps) {
     }
   })
 
+  const { mutate } = useMutation({
+    mutationFn: updateProject,
+    onError: () => {
+
+    },
+    onSuccess: () => {
+
+    }
+  })
+
   const handleForm = (formData: ProjectFormData) => {
-    console.log(formData)
+    const data = {
+      formData,
+      projectId
+    }
+    mutate(data)
 
   }
   return (
@@ -49,7 +66,7 @@ export default function EditProjectForm({ data }: EditProjectFormProps) {
           <input
             type="submit"
             value="Guardar Cambios"
-            className="w-full uppercase p-2 font-semibold cursor-pointer transition-colors border border-slate-900 rounded-lg hover:bg-slate-900 hover:text-white"
+            className="w-full uppercase p-1 font-semibold cursor-pointer transition-colors border border-slate-900 rounded-lg hover:bg-slate-900 hover:text-white"
           />
         </form>
       </div>

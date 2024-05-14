@@ -18,13 +18,13 @@ type ProjectFormProps = {
 export default function ProjectForm({ errors, register }: ProjectFormProps) {
   return (
     <>
-      <div className="mb-5 space-y-3">
-        <label htmlFor="projectName" className="text-sm uppercase font-bold">
+      <div className="mb-4">
+        <label htmlFor="projectName" className="text-sm font-semibold">
           Nombre del Proyecto
         </label>
         <input
           id="projectName"
-          className="w-full p-3  border border-gray-200"
+          className="w-full p-1  border border-gray-200 rounded-md font-light text-sm"
           type="text"
           placeholder="Nombre del Proyecto"
           {...register("projectName", {
@@ -37,13 +37,13 @@ export default function ProjectForm({ errors, register }: ProjectFormProps) {
         )}
       </div>
 
-      <div className="mb-5 space-y-3">
-        <label htmlFor="clientName" className="text-sm uppercase font-bold">
+      <div className="mb-4">
+        <label htmlFor="clientName" className="text-sm font-semibold">
           Nombre Cliente
         </label>
         <input
           id="clientName"
-          className="w-full p-3  border border-gray-200"
+          className="w-full p-1  border border-gray-200 rounded-md font-light text-sm"
           type="text"
           placeholder="Nombre del Cliente"
           {...register("clientName", {
@@ -56,13 +56,13 @@ export default function ProjectForm({ errors, register }: ProjectFormProps) {
         )}
       </div>
 
-      <div className="mb-5 space-y-3">
-        <label htmlFor="description" className="text-sm uppercase font-bold">
+      <div className="mb-4">
+        <label htmlFor="description" className="text-sm font-semibold">
           Descripción
         </label>
         <textarea
           id="description"
-          className="w-full p-3  border border-gray-200"
+          className="w-full p-1  border border-gray-200 rounded-md font-light text-sm"
           placeholder="Descripción del Proyecto"
           {...register("description", {
             required: "Una descripción del proyecto es obligatoria"
