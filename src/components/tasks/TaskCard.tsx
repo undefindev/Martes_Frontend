@@ -9,7 +9,7 @@ type TaskCardProps = {
 
 export default function TaskCard({ task }: TaskCardProps) {
   return (
-    <li className="p-4 bg-white border border-slate-300 flex justify-between gap-2">
+    <li className="p-4 bg-white rounded-lg border border-slate-300 flex justify-between gap-2">
       <div className="min-w-0 flex flex-col gap-y-4">
         <button
           className="text-xl font-semibold text-left text-slate-600"
