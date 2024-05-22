@@ -28,21 +28,21 @@ export default function DashboardView() {
   /* console.log(data) */
   if (data) return (
     <>
-      <div className='flex items-center justify-around'>
+      <div className='flex items-center justify-around mt-8'>
         <div>
           <h2 className="text-4xl font-black">Mis Proyectos</h2>
           <p className="text-xl font-light text-gray-500">He aqui los Malditos Proyectos.. cuyeyo..!!</p>
         </div>
-        <nav className="my-4">
+        <nav>
           <Link
             to='/projects/create'
-            className="border border-slate-500 rounded-lg hover:bg-slate-900 px-8 py-2 hover:text-white text-xl hove:font-bold cursor-pointer transition-colors">
+            className="font-semibold border border-slate-300 rounded-lg hover:bg-slate-900 px-8 py-2 hover:text-white text-xl hove:font-bold cursor-pointer transition-colors">
             Nuevo Proyecto
           </Link>
         </nav>
       </div>
       {data.length ? (
-        <ul role="list" className="divide-y divide-gray-100 rounded-lg border border-gray-100 mt-10 bg-white shadow-lg">
+        <ul role="list" className="divide-y divide-gray-100 rounded-lg border border-red-100 mt-10 bg-white shadow-lg">
           {data.map((project) => (
             <li key={project._id} className="flex justify-between gap-x-6 px-5 py-10">
               <div className="flex min-w-0 gap-x-4">

@@ -26,6 +26,8 @@ export default function AddTaskModal() {
     description: ""
   }
 
+
+  // para instanciar
   const { register, handleSubmit, reset, formState: { errors } } = useForm({ defaultValues: initialValues })
 
   const queryClient = useQueryClient()
