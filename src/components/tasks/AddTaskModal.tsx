@@ -1,3 +1,4 @@
+/* este archivo es para crear una tarea y mostrarla en pantalla */
 import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
@@ -27,7 +28,7 @@ export default function AddTaskModal() {
   }
 
 
-  // para instanciar
+  // crear una tarea
   const { register, handleSubmit, reset, formState: { errors } } = useForm({ defaultValues: initialValues })
 
   const queryClient = useQueryClient()
@@ -37,9 +38,9 @@ export default function AddTaskModal() {
       toast.error(error.message)
     },
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ['editProject', projectId] })
+      queryClient.invalidateQueries({ queryKey: ['editProject', projectId] }) // esta mamada es para que se muestre en la pantalla despues de crear la tarea
       toast.success(data)
-      reset()
+      reset() // limpia el maldito formulario
       navigate(location.pathname, { replace: true }) // para ocultar el modal
     }
   })

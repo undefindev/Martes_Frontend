@@ -1,3 +1,4 @@
+/* este componente solo renderiza el 'editTaskModal.. */
 import { Navigate, useLocation, useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
 import { getTaskById } from "@/api/TaskAPI"
@@ -14,8 +15,8 @@ export default function EditTaskData() {
   const { data, isError } = useQuery({
     queryKey: ['task', taskId],
     queryFn: () => getTaskById({ projectId, taskId }),
-    enabled: !!taskId,
-    retry: false // para llevar al usuario inmediatamente al 404
+    enabled: !!taskId, // convertimos un valor a true si tiene algo o false si esta vacio
+    /* retry: false // para llevar al usuario inmediatamente al 404 */
   })
 
   if (isError) return <Navigate to={'/404'} />

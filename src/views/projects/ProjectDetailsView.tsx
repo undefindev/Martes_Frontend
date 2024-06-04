@@ -12,9 +12,8 @@ export default function ProjectDetailsView() {
 
   const params = useParams()
   const projectId = params.projectId!
-
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['project', projectId],
+    queryKey: ['editProject', projectId],
     queryFn: () => getProjectById(projectId),
     retry: false
   })
@@ -30,7 +29,7 @@ export default function ProjectDetailsView() {
           type="button"
           value="Guardar Cambios"
           onClick={() => navigate(location.pathname + '?newTask=true')}
-          className="border border-slate-500 rounded-lg py-2 px-4 hover:bg-slate-900 hover:text-white cursor-pointer transition-colors"
+          className="border rounded-lg py-2 px-4 font-semibold hover:bg-slate-900 hover:text-white cursor-pointer transition-colors"
         >Agregar Tarea</button>
       </nav>
 

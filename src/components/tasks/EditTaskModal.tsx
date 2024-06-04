@@ -1,3 +1,4 @@
+/* este muestra el formulario para editar */
 import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -36,6 +37,7 @@ export default function EditTaskModal({ data, taskId }: EditTaskModalProps) {
     },
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['editProject', projectId] })
+      queryClient.invalidateQueries({ queryKey: ['task', taskId] })
       toast.success(data)
       reset()
       navigate(location.pathname, { replace: true }) // para ocultar el modal

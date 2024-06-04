@@ -31,7 +31,7 @@ export default function DashboardView() {
       <div className='flex items-center justify-around mt-8'>
         <div>
           <h2 className="text-4xl font-black">Mis Proyectos</h2>
-          <p className="text-xl font-light text-gray-500">He aqui los Malditos Proyectos.. cuyeyo..!!</p>
+          <p className="text-xl font-light text-gray-500">He aqui los Malditos Proyectos..!!</p>
         </div>
         <nav>
           <Link
