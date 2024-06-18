@@ -25,7 +25,7 @@ export default function DashboardView() {
   /* console.log(data) */
   if (data) return (
     <>
-      <div className='flex flex-col gap-4 md:gap-0 md:flex-row items-center justify-around mt-8'>
+      <div className='container mx-auto flex flex-col gap-4 md:gap-0 md:flex-row items-center justify-around mt-8'>
         <div className="text-center md:text-justify">
           <h2 className="text-xl md:text-2xl font-sans antialiased font-semibold leading-relaxed tracking-normal text-gray-900">Mis Proyectos</h2>
           {/* <p className="font-light text-gray-500">aqui los Malditos Proyectos..!!</p> */}
