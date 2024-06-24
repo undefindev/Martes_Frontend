@@ -1,4 +1,3 @@
-import Logo from "@/components/Logo"
 import { Outlet } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 
@@ -8,7 +7,6 @@ export default function AuthLayout() {
     <>
       <div className="bg-gray-300 min-h-screen">
         <div className="py-8 lg:py-16 mx-auto w-[450px]">
-          <Logo />
           <div className="mt-8">
             <Outlet />
           </div>

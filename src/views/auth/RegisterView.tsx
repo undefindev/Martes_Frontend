@@ -34,108 +34,118 @@ export default function RegisterView() {
 
   return (
     <>
-      <h1 className="text-5xl font-black text-white">Crear Cuenta</h1>
-      <p className="text-2xl font-light text-white mt-5">
-        Llena el formulario para {''}
-        <span className=" text-fuchsia-500 font-bold"> crear tu cuenta</span>
-      </p>
-
       <form
         onSubmit={handleSubmit(handleRegister)}
-        className="space-y-8 p-10  bg-white/50 mt-10"
+        className="bg-white rounded-2xl md:max-w-96 p-12"
         noValidate
       >
-        <div className="flex flex-col gap-5">
-          <label
-            className="font-normal text-2xl"
-            htmlFor="email"
-          >Email</label>
-          <input
-            id="email"
-            type="email"
-            placeholder="Email de Registro"
-            className="w-full p-3  border-gray-300 border"
-            {...register("email", {
-              required: "El Email de registro es obligatorio",
-              pattern: {
-                value: /\S+@\S+\.\S+/,
-                message: "E-mail no válido",
-              },
-            })}
-          />
-          {errors.email && (
-            <ErrorMessage>{errors.email.message}</ErrorMessage>
-          )}
+        <h3 className="text-2xl font-semibold text-gray-600 mb-8">Crear Cuenta</h3>
+        <div className="divide-y divide-gray-200">
+          <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 pb-0">
+            <div className="relative">
+              <input
+                id="email"
+                type="email"
+                placeholder="doe@email.com"
+                className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-indigo-400"
+                {...register("email", {
+                  required: "El Email de registro es obligatorio",
+                  pattern: {
+                    value: /\S+@\S+\.\S+/,
+                    message: "E-mail no válido",
+                  },
+                })}
+              />
+              <label className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">email</label>
+              {errors.email && (
+                <ErrorMessage>{errors.email.message}</ErrorMessage>
+              )}
+            </div>
+
+            <div className="relative">
+              {/*  <label
+            className="text-sm"
+          >Nombre</label> */}
+              <input
+                type="name"
+                placeholder="nombre de Usuario"
+                className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-indigo-400"
+                {...register("name", {
+                  required: "El Nombre de usuario es obligatorio",
+                })}
+              />
+              <label className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Nombre de Usuario</label>
+              {errors.name && (
+                <ErrorMessage>{errors.name.message}</ErrorMessage>
+              )}
+            </div>
+
+            <div className="relative">
+              {/* <label
+            className="text-sm"
+          >Password</label> */}
+
+              <input
+                type="password"
+                placeholder="crea una contraseña"
+                className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-indigo-400"
+                {...register("password", {
+                  required: "El Password es obligatorio",
+                  minLength: {
+                    value: 8,
+                    message: 'El Password debe ser mínimo de 8 caracteres'
+                  }
+                })}
+              />
+              <label className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Contraseña</label>
+              {errors.password && (
+                <ErrorMessage>{errors.password.message}</ErrorMessage>
+              )}
+            </div>
+
+            <div className="relative">
+              {/* <label
+            className="text-sm"
+          >Repetir Password</label> */}
+
+              <input
+                id="password_confirmation"
+                type="password"
+                placeholder="repite tu contraseña"
+                className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-indigo-400"
+                {...register("password_confirmation", {
+                  required: "Repetir Password es obligatorio",
+                  validate: value => value === password || 'Los Passwords no son iguales'
+                })}
+              />
+              <label className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">repite tu contraseña</label>
+
+              {errors.password_confirmation && (
+                <ErrorMessage>{errors.password_confirmation.message}</ErrorMessage>
+              )}
+            </div>
+          </div>
         </div>
 
-        <div className="flex flex-col gap-5">
-          <label
-            className="font-normal text-2xl"
-          >Nombre</label>
-          <input
-            type="name"
-            placeholder="Nombre de Registro"
-            className="w-full p-3  border-gray-300 border"
-            {...register("name", {
-              required: "El Nombre de usuario es obligatorio",
-            })}
-          />
-          {errors.name && (
-            <ErrorMessage>{errors.name.message}</ErrorMessage>
-          )}
-        </div>
 
-        <div className="flex flex-col gap-5">
-          <label
-            className="font-normal text-2xl"
-          >Password</label>
 
-          <input
-            type="password"
-            placeholder="Password de Registro"
-            className="w-full p-3  border-gray-300 border"
-            {...register("password", {
-              required: "El Password es obligatorio",
-              minLength: {
-                value: 8,
-                message: 'El Password debe ser mínimo de 8 caracteres'
-              }
-            })}
-          />
-          {errors.password && (
-            <ErrorMessage>{errors.password.message}</ErrorMessage>
-          )}
-        </div>
-
-        <div className="flex flex-col gap-5">
-          <label
-            className="font-normal text-2xl"
-          >Repetir Password</label>
-
-          <input
-            id="password_confirmation"
-            type="password"
-            placeholder="Repite Password de Registro"
-            className="w-full p-3  border-gray-300 border"
-            {...register("password_confirmation", {
-              required: "Repetir Password es obligatorio",
-              validate: value => value === password || 'Los Passwords no son iguales'
-            })}
-          />
-
-          {errors.password_confirmation && (
-            <ErrorMessage>{errors.password_confirmation.message}</ErrorMessage>
-          )}
+        <div className="text-end">
+          <Link
+            to={'/auth/forgot-password'}
+            className="text-sm text-indigo-400 hover:text-purple-500 mt-2"
+          >
+            olvide contraseña
+          </Link>
         </div>
 
         <input
           type="submit"
           value='Registrarme'
-          className="bg-fuchsia-600 hover:bg-fuchsia-700 w-full p-3  text-white font-black  text-xl cursor-pointer"
+          className="w-full p-2 mt-12 rounded-full text-white font-semibold text-xl cursor-pointer bg-gradient-to-r from-cyan-400 via-indigo-500 to-purple-400"
         />
 
         <nav className="mt-8 flex flex-col space-y-4 text-center">
-          <p>Ya tienes Cuenta?..{' '}
+          <p className="text-sm">Ya tienes Cuenta?..{' '}
             <span>
               <Link
                 to={'/auth/login'}

@@ -40,7 +40,7 @@ export default function DashboardView() {
       </div>
       {data.length ? (
         <div>
-          <div className="relative flex flex-col text-gray-700 bg-white/50 w-full rounded-xl bg-clip-border mt-12">
+          <div className="relative flex flex-col text-gray-700 w-full rounded-xl bg-clip-border mt-12">
             <nav className="flex min-w[240px] flex-col gap-4 p-2 font-sans text-base font-normal text-gray-700">
               {data.map((project) => (
                 <Link
