@@ -31,35 +31,37 @@ export default function CreateProjectView() {
   const handleForm = (formData: ProjectFormData) => mutate(formData) // una sola linea en el arrowFunction no ocupa las llaves
   return (
     <>
-      <div className="max-w-96 mx-auto">
-        <h2 className="text-4xl">Crear Proyecto</h2>
-        <nav className="mt-4">
+      <form
+        onSubmit={handleSubmit(handleForm)}
+        noValidate
+        className='bg-gray-50 rounded-2xl mx-auto md:max-w-96 px-12 pt-12 pb-6'
+      >
+
+        <div>
+          <h2 className="text-2xl font-semibold text-gray-600 mb-8">Nuevo Proyecto</h2>
+        </div>
+
+        <ProjectForm
+          register={register} // estas son las props
+          errors={errors}
+
+        />
+
+        <nav className="mt-4 flex items-center justify-between gap-2">
+          <input
+            type="submit"
+            value="Crear Proyecto"
+            className="w-full p-2 mt-12 rounded-xl text-white font-semibold text-xl cursor-pointer bg-indigo-400"
+          />
           <Link
             to='/'
-            className="px-8 py-2 border border-slate-900 rounded-lg font-semibold cursor-pointer transition-colors hover:bg-slate-900 hover:text-white" >
+            className="p-2 mt-12 rounded-full text-white font-semibold text-xl cursor-pointer bg-gradient-to-r from-cyan-400 via-indigo-500 to-purple-400" >
             Home
           </Link>
         </nav>
 
-        <form
-          onSubmit={handleSubmit(handleForm)}
-          className="mt-8 shadow-lg p-8 rounded-lg border"
-          noValidate
-        >
 
-          <ProjectForm
-            register={register} // estas son las props
-            errors={errors}
-
-          />
-
-          <input
-            type="submit"
-            value="Crear Proyecto"
-            className="w-full uppercase p-2 font-semibold cursor-pointer transition-colors border border-slate-900 rounded-lg hover:bg-slate-900 hover:text-white"
-          />
-        </form>
-      </div>
+      </form>
     </>
   )
 }
