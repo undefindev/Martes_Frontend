@@ -45,6 +45,7 @@ export async function authenticateUser(formData: UserLoginForm) {
   try {
     const url = '/auth/login'
     const { data } = await api.post<string>(url, formData)
+    localStorage.setItem('AUTH_TOKEN', data) // setiamos el jwt en el local storage
     return data
   } catch (error) {
     if (isAxiosError(error) && error.response) {
