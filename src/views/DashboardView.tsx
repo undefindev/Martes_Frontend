@@ -43,23 +43,25 @@ export default function DashboardView() {
           <div className="relative flex flex-col text-gray-700 w-full rounded-xl bg-clip-border mt-12">
             <nav className="flex min-w[240px] flex-col gap-4 p-2 font-sans text-base font-normal text-gray-700">
               {data.map((project) => (
-                <Link
-                  key={project._id}
-                  to={`/projects/${project._id}`}
-                  className="flex items-center w-full p-3 py-4 pl-4 pr-1 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-100 hover:bg-opacity-80 hover:text-blue-900 focus:bg-blue-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-50 active:bg-opacity-80 active:text-blue-900"
-                >
-                  {/* left side.. data */}
-                  <div className="w-3/4">
-                    <h6 className="block font-sans text-xl text-start antialiased font-semibold leading-relaxed tracking-normal text-gray-900">
-                      {project.projectName}
-                    </h6>
-                    <p className="block font-sans text-base antialiased font-light leading-normal">
-                      {project.clientName}
-                    </p>
-                    <p className="block font-sans text-base antialiased font-normal leading-normal text-ellipsis">
-                      {project.description}
-                    </p>
-                  </div>
+                <div className="flex gap-4">
+                  <Link
+                    key={project._id}
+                    to={`/projects/${project._id}`}
+                    className="flex items-center w-full p-3 py-4 pl-4 pr-1 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-100 hover:bg-opacity-80 hover:text-blue-900 focus:bg-blue-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-50 active:bg-opacity-80 active:text-blue-900"
+                  >
+                    {/* left side.. data */}
+                    <div className="w-3/4">
+                      <h6 className="block font-sans text-xl text-start antialiased font-semibold leading-relaxed tracking-normal text-gray-900">
+                        {project.projectName}
+                      </h6>
+                      <p className="block font-sans text-base antialiased font-light leading-normal">
+                        {project.clientName}
+                      </p>
+                      <p className="block font-sans text-base antialiased font-normal leading-normal text-ellipsis">
+                        {project.description}
+                      </p>
+                    </div>
+                  </Link>
                   {/* rigth side.. tools */}
                   <div className="grid ml-auto place-items-center justify-self-end w-auto mr-4">
                     <div className="flex items-center gap-4">
@@ -85,7 +87,7 @@ export default function DashboardView() {
                       </button>
                     </div>
                   </div>
-                </Link>
+                </div>
               ))}
             </nav>
           </div >
