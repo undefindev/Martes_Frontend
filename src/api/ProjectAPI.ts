@@ -17,8 +17,13 @@ export async function createProject(formData: ProjectFormData) {
 // yo no se si mañana yo regrese a sus brazos.. solo se que fuen marzo.. cuando la conoci
 
 export async function getProjects() {
+  const token = localStorage.getItem('AUTH_TOKEN')
   try {
-    const { data } = await api('/projects')
+    const { data } = await api('/projects', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
     const response = dashboardProjectSchema.safeParse(data)
     if (response.success) {
       return response.data
