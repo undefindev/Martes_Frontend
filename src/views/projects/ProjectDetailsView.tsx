@@ -1,10 +1,10 @@
 import { Navigate, useNavigate, useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
 import { getProjectById } from "@/api/ProjectAPI"
-import AddTaskModal from "@/components/admin/tasks/AddTaskModal"
-import TaskList from "@/components/admin/tasks/TaskList"
-import EditTaskData from "@/components/admin/tasks/EditTaskData"
-import TaskModalDetails from "@/components/admin/tasks/TaskModalDetails"
+import AddTaskModal from "@/components/tasks/AddTaskModal"
+import TaskList from "@/components/tasks/TaskList"
+import EditTaskData from "@/components/tasks/EditTaskData"
+import TaskModalDetails from "@/components/tasks/TaskModalDetails"
 
 export default function ProjectDetailsView() {
 

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import type { ConfirmToken, NewPasswordForm } from "../../types";
-import ErrorMessage from "@/components/admin/ErrorMessage";
+import ErrorMessage from "@/components/ErrorMessage";
 import { updatePasswordWithToken } from "@/api/AuthAPI";
 import { toast } from "react-toastify";
 
