@@ -1,5 +1,5 @@
-import Container from "../Container";
-import Logo from "../Logo";
+import Container from "../../Container";
+import Logo from "../../Logo";
 
 
 export default function Navbar() {

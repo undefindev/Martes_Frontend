@@ -1,6 +1,6 @@
 import { FieldErrors, UseFormRegister } from "react-hook-form"
 import { TaskFormData } from "@/types/index";
-import ErrorMessage from "../ErrorMessage";
+import ErrorMessage from "@/components/admin/ErrorMessage";
 
 type TaskFormProps = {
   errors: FieldErrors<TaskFormData>
