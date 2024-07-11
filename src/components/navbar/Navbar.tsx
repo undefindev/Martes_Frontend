@@ -2,8 +2,6 @@ import { useAuth } from "@/hooks/useAuth";
 import Logo from "../Logo";
 import NavMenu from "../NavMenu";
 
-
-
 export default function Navbar() {
   const { data } = useAuth()
   if (data) return (
