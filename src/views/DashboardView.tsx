@@ -27,9 +27,9 @@ export default function DashboardView() {
   /* console.log(data) */
   if (data) return (
     <>
-      <div className='container mx-auto flex flex-col gap-4 md:gap-0 md:flex-row items-center justify-around mt-8 text-white'>
+      <div className='container mx-auto flex flex-col gap-4 md:gap-0 md:flex-row items-center justify-around mt-8'>
         <div className="text-center md:text-justify">
-          <h2 className="text-xl md:text-2xl font-sans antialiased font-semibold leading-relaxed tracking-normal text-white">Mis Proyectos</h2>
+          <h2 className="text-xl md:text-2xl font-sans antialiased font-semibold leading-relaxed tracking-normal">Mis Proyectos</h2>
           {/* <p className="font-light text-gray-500">aqui los Malditos Proyectos..!!</p> */}
         </div>
         <nav>
@@ -42,8 +42,8 @@ export default function DashboardView() {
       </div>
       {data.length ? (
         <div>
-          <div className="relative flex flex-col text-white w-full rounded-xl bg-clip-border mt-12">
-            <nav className="flex min-w[240px] flex-col gap-4 p-2 font-sans text-base font-normal text-white">
+          <div className="relative flex flex-col w-full rounded-xl bg-clip-border mt-12">
+            <nav className="flex min-w[240px] flex-col gap-4 p-2 font-sans text-base font-normal">
               {data.map((project) => (
                 <div
                   className="flex gap-4"
@@ -55,7 +55,7 @@ export default function DashboardView() {
                   >
                     {/* left side.. data */}
                     <div className="w-3/4">
-                      <h6 className="block font-sans text-xl text-start antialiased font-semibold leading-relaxed tracking-normal text-white">
+                      <h6 className="block font-sans text-xl text-start antialiased font-semibold leading-relaxed tracking-normal">
                         {project.projectName}
                       </h6>
                       <p className="block font-sans text-base antialiased font-light leading-normal">

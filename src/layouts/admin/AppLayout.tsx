@@ -4,7 +4,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from "@/hooks/useAuth";
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
-
 export default function AppLayout() {
 
   const { data, isError, isLoading } = useAuth()
@@ -16,30 +15,36 @@ export default function AppLayout() {
 
   if (data) return (
     <>
-      <div className="flex h-full w-full">
-        {/* aqui va el aside o sidebar */}
-        {/* navbar & main content */}
-        <div className="h-full w-full">
-          {/* main content */}
-          <main className={`mx-[12px] h-full flex-none transition-all md:pr-2 xl:ml-[313px]`}>
-            <div className="h-full">
-              <Navbar />
-              {/* main content */}
-              <section className="pt-5s mx-auto mb-auto h-full min-h-[84vh] p-2 md:pr-2">
-                <Outlet />
-              </section>
-              {/* footer */}
-              <div className="p-3">
-                <Footer />
-              </div>
-              <ToastContainer
-                pauseOnHover={false}
-                pauseOnFocusLoss={false}
-              />
-            </div>
-          </main>
-        </div>
-      </div>
+      <header className="flex items-center p-4">
+        <Navbar />
+      </header>
+
+      {/* navbar & main content */}
+      <section className="flex-1">
+        {/* overlay */}
+        <div></div>
+
+        {/* aside */}
+        <aside>soy el aside</aside>
+
+        {/* main content */}
+        <main>
+          {/* container */}
+          <section>
+            <Outlet />
+          </section>
+        </main>
+        {/* footer */}
+        <footer className="py-4">
+          <Footer />
+        </footer>
+        <ToastContainer
+          pauseOnHover={false}
+          pauseOnFocusLoss={false}
+        />
+      </section>
+
+
     </>
   )
 }
