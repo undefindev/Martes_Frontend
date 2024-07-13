@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
-import { Bars3Icon } from '@heroicons/react/20/solid'
+import { RxAvatar } from "react-icons/rx";
 import { Link } from 'react-router-dom'
 import { User } from '../types'
 import { useQueryClient } from '@tanstack/react-query'
@@ -20,8 +20,8 @@ export default function NavMenu({ name }: NavMenueProps) {
 
   return (
     <Popover className="relative">
-      <Popover.Button className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 p-1 rounded-lg border">
-        <Bars3Icon className='w-8 h-8' />
+      <Popover.Button className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 p-1">
+        <RxAvatar className='w-6 h-6 text-indigo-500' />
       </Popover.Button>
 
       <Transition

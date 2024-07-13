@@ -16,35 +16,35 @@ export default function AppLayout() {
 
   if (data) return (
     <>
-      <Header />
-      {/* navbar & main content */}
-      <section className=" md:flex flex-rows items-center ">
-        {/* overlay */}
-        <div></div>
+      <div className="h-screen flex flex-col">
+        <Header />
+        {/* navbar & main content */}
+        <section className=" md:flex flex-rows items-center ">
+          {/* overlay */}
+          <div></div>
 
-        {/* aside */}
-        <aside></aside>
+          {/* aside */}
+          <aside></aside>
 
-        {/* main content */}
-        <main className="flex-1">
-          {/* container */}
-          <section>
-            <Outlet />
-          </section>
-          {/* footer */}
-          <footer className="py-4">
-            <Footer />
-          </footer>
-        </main>
-
-
-      </section>
-      <ToastContainer
-        pauseOnHover={false}
-        pauseOnFocusLoss={false}
-      />
+          {/* main content */}
+          <main className="flex-1">
+            {/* container */}
+            <section>
+              <Outlet />
+            </section>
+            {/* footer */}
+            <footer className="py-4">
+              <Footer />
+            </footer>
+          </main>
 
 
+        </section>
+        <ToastContainer
+          pauseOnHover={false}
+          pauseOnFocusLoss={false}
+        />
+      </div>
     </>
   )
 }

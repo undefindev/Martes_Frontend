@@ -1,9 +1,11 @@
+import { Fragment } from 'react'
+import { Menu, Transition } from '@headlessui/react'
+import { EllipsisVerticalIcon } from '@heroicons/react/20/solid'
 import { Link } from "react-router-dom"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import { deleteProject, getProjects } from "@/api/ProjectAPI"
 import { toast } from 'react-toastify'
-import { PiTrashThin } from "react-icons/pi";
-import { BiSolidEdit } from "react-icons/bi";
+
 
 export default function DashboardView() {
   const { data, isLoading } = useQuery({
@@ -41,57 +43,74 @@ export default function DashboardView() {
         </nav>
       </div>
       {data.length ? (
-        <div>
-          <div className="relative flex flex-col w-full rounded-xl bg-clip-border mt-12">
-            <nav className="flex min-w[240px] flex-col gap-4 p-2 font-sans text-base font-normal">
-              {data.map((project) => (
-                <div
-                  className="flex gap-4"
-                  key={project._id}
-                >
-                  <Link
-                    to={`/projects/${project._id}`}
-                    className="flex items-center w-full p-3 py-4 pl-4 pr-1 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-100 hover:bg-opacity-80 hover:text-blue-900 focus:bg-blue-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-50 active:bg-opacity-80 active:text-blue-900"
-                  >
-                    {/* left side.. data */}
-                    <div className="w-3/4">
-                      <h6 className="block font-sans text-xl text-start antialiased font-semibold leading-relaxed tracking-normal">
-                        {project.projectName}
-                      </h6>
-                      <p className="block font-sans text-base antialiased font-light leading-normal">
-                        {project.clientName}
-                      </p>
-                      <p className="block font-sans text-base antialiased font-normal leading-normal text-ellipsis">
-                        {project.description}
-                      </p>
-                    </div>
-                  </Link>
-                  {/* rigth side.. tools */}
-                  <div className="grid ml-auto place-items-center justify-self-end w-auto mr-4">
-                    <div className="flex items-center gap-4">
-                      <Link
-                        to={`projects/${project._id}/edit`}
-                        className='relative h-10 max-h-[40px] w-10 max-w-[40px] z-10 select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-indigo-500 transition-all hover:bg-blue-500/10 active:bg-blue-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none'>
-                        <span className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                          <BiSolidEdit />
-                        </span>
-                      </Link>
-                      <button
-                        type='button'
-                        onClick={() => mutate(project._id)}
-                        className='relative h-10 max-h-[40px] w-10 max-w-[40px] z-10 select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-indigo-500 transition-all hover:bg-blue-500/10 active:bg-blue-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none'
-                      >
-                        <span className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                          <PiTrashThin />
-                        </span>
-                      </button>
-                    </div>
+        <ul role="list" className="divide-y divide-slate-200 border border-gray-100 mt-10 bg-white shadow-lg">
+          {data.map((project) => (
+            <li key={project._id} className="flex items-center justify-around gap-x-6 px-5 py-10">
+              <div className='flex min-w-0 gap-x-4'>
+                <div className='min-w-0 flex-auto space-y-2'>
+                  <div className='mb-2'>
+                    <Link
+                      to={`/projects/${project._id}`}
+                      className="flex items-center w-full p-3 py-4 pl-4 pr-1 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-100 hover:bg-opacity-80 hover:text-blue-900 focus:bg-blue-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-50 active:bg-opacity-80 active:text-blue-900"
+                    >
+                      {/* left side.. data */}
+                      <div className="w-full">
+                        <h6 className="block font-sans text-xl text-start antialiased font-semibold leading-relaxed tracking-normal">
+                          {project.projectName}
+                        </h6>
+                        <p className="block font-sans text-base antialiased font-light leading-normal">
+                          {project.clientName}
+                        </p>
+                        <p className="block font-sans text-base antialiased font-normal leading-normal text-ellipsis">
+                          {project.description}
+                        </p>
+                      </div>
+                    </Link>
                   </div>
                 </div>
-              ))}
-            </nav>
-          </div >
-        </div>
+              </div>
+
+              {/* rigth side.. tools */}
+              <Menu as="div" className="relative flex-none">
+                <Menu.Button className="-m-2.5 block p-2.5 text-gray-500 hover:text-gray-900">
+                  <span className="sr-only">opciones</span>
+                  <EllipsisVerticalIcon className="h-9 w-9" aria-hidden="true" />
+                </Menu.Button>
+                <Transition as={Fragment} enter="transition ease-out duration-100"
+                  enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100"
+                  leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100"
+                  leaveTo="transform opacity-0 scale-95">
+                  <Menu.Items
+                    className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
+                  >
+                    <Menu.Item>
+                      <Link to={`/projects/${project._id}`}
+                        className='block px-3 py-1 text-sm leading-6 text-gray-900'>
+                        Ver Proyecto
+                      </Link>
+                    </Menu.Item>
+
+                    <Menu.Item>
+                      <Link to={`/projects/${project._id}/edit`}
+                        className='block px-3 py-1 text-sm leading-6 text-gray-900'>
+                        Editar Proyecto
+                      </Link>
+                    </Menu.Item>
+                    <Menu.Item>
+                      <button
+                        type='button'
+                        className='block px-3 py-1 text-sm leading-6 text-red-500'
+                        onClick={() => mutate(project._id)}
+                      >
+                        Eliminar Proyecto
+                      </button>
+                    </Menu.Item>
+                  </Menu.Items>
+                </Transition>
+              </Menu>
+            </li>
+          ))}
+        </ul>
       ) : (
         <p className="text-center py-20">
           Mas Triste.. {''}
