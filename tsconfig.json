@@ -38,6 +38,9 @@
       "@/hooks/*": [
         "hooks/*"
       ],
+      "@/assets/*": [
+        "assets/*"
+      ],
     },
     /* Bundler mode */
     "moduleResolution": "bundler",
