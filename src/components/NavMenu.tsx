@@ -4,6 +4,8 @@ import { RxAvatar } from "react-icons/rx";
 import { Link } from 'react-router-dom'
 import { User } from '../types'
 import { useQueryClient } from '@tanstack/react-query'
+import { UserCircle2 } from 'lucide-react';
+import Button from './Button';
 
 type NavMenueProps = {
   name: User['name']
@@ -21,7 +23,9 @@ export default function NavMenu({ name }: NavMenueProps) {
   return (
     <Popover className="relative">
       <Popover.Button className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 p-1">
-        <RxAvatar className='w-6 h-6 text-indigo-500' />
+        <Button variant='ghost' size='icon'>
+          <UserCircle2 />
+        </Button>
       </Popover.Button>
 
       <Transition

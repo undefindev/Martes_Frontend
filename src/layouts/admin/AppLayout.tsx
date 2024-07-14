@@ -4,6 +4,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from "@/hooks/useAuth";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
+import CategoryPills from "@/components/CategoryPills";
+
+
 
 export default function AppLayout() {
 
@@ -16,30 +19,36 @@ export default function AppLayout() {
 
   if (data) return (
     <>
-      <div className="h-screen flex flex-col">
+      <div className="max-h-screen flex flex-col">
         <Header />
         {/* navbar & main content */}
-        <section className=" md:flex flex-rows items-center ">
-          {/* overlay */}
-          <div></div>
-
+        <div className="grid grid-cols-[auto_1fr] flex-grow overflow-auto">
           {/* aside */}
-          <aside></aside>
+          <aside>sidebar</aside>
+          <div className=" overflow-x-hidden px-8 pb-4">
+            {/* categories */}
+            <div className=" sticky top-0 z-10 pb-4">
+              <CategoryPills />
+            </div>
 
-          {/* main content */}
-          <main className="flex-1">
-            {/* container */}
-            <section>
-              <Outlet />
-            </section>
-            {/* footer */}
-            <footer className="py-4">
-              <Footer />
-            </footer>
-          </main>
+            {/* main content */}
+            <main className="flex-1">
+
+              {/* container */}
+              <section>
+                <Outlet />
+              </section>
+              {/* footer */}
+              <footer className="py-4">
+                <Footer />
+              </footer>
+            </main>
+          </div>
 
 
-        </section>
+
+
+        </div>
         <ToastContainer
           pauseOnHover={false}
           pauseOnFocusLoss={false}

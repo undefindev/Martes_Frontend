@@ -62,6 +62,8 @@ export const dashboardProjectSchema = z.array(
   })
 )
 
+/* categories */
+
 /* esto es para no generar diferentes schema */
 export type Project = z.infer<typeof projectSchema>
 export type ProjectFormData = Pick<Project, 'clientName' | 'projectName' | 'description'>

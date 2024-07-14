@@ -2,17 +2,21 @@ import { useAuth } from "@/hooks/useAuth";
 import NavMenu from "../NavMenu";
 import { Link } from "react-router-dom";
 import Logo from "../Logo";
-import { Bell, Menu, Mic, Search, Users } from "lucide-react";
+import { ArrowLeft, Bell, Menu, Mic, Search, Users } from "lucide-react";
 import Button from "../Button";
+import { useState } from "react";
 
 export default function Header() {
+
+  const [showFullWidthSearch, setShowFullWidthSearch] = useState(false)
+
   const { data } = useAuth()
   if (data) return (
     <>
       <div className="flex justify-between items-center gap-8 lg:gap-16 pt-2 mb-6 mx-4">
         {/* aside & logo */}
-        <div className="flex items-center flex-shrink-0 gap-4">
-          <Button>
+        <div className={`items-center flex-shrink-0 gap-4 ${showFullWidthSearch ? "hidden" : "flex"}`}>
+          <Button variant='ghost' size='icon'>
             <Menu />
           </Button>
           <Link to={'/'}>
@@ -21,7 +25,21 @@ export default function Header() {
         </div>
 
         {/* search bar */}
-        <form className="hidden md:flex flex-grow justify-center gap-4">
+        <form className={`flex-grow justify-center gap-4 ${showFullWidthSearch ? "flex" : "hidden md:flex"}`}>
+
+          {showFullWidthSearch && (
+            <Button
+              size="icon"
+              type="button"
+              variant="ghost"
+              onClick={() => setShowFullWidthSearch(false)}
+              className="flex-shrink-0"
+            >
+              <ArrowLeft />
+            </Button>
+          )}
+
+          {/* la barrita de busqueda */}
           <div className="flex flex-grow max-w-[600px]">
             <input
               type="search"
@@ -33,15 +51,21 @@ export default function Header() {
             </Button>
           </div>
 
+          {/* microchono */}
           <Button size="icon" type="button" className="flex-shrink-0">
             <Mic />
           </Button>
         </form>
 
         {/* sign in & team colaborators */}
-        <div className="flex flex-shrink-0 items-center md:gap-2">
+        <div className={`flex-shrink-0 items-center md:gap-2 ${showFullWidthSearch ? "hidden" : "flex"}`}>
           {/* notifications */}
-          <Button size="icon" variant="ghost" className="md:hidden">
+          <Button
+            size="icon"
+            variant="ghost"
+            className="md:hidden"
+            onClick={() => setShowFullWidthSearch(true)}
+          >
             <Search />
           </Button>
 
@@ -71,3 +95,18 @@ export default function Header() {
     </>
   )
 }
+
+
+/* {showFullWidthSearch && (
+            <Button
+              size="icon"
+              type="button"
+              variant="ghost"
+              onClick={() => setShowFullWidthSearch(false)}
+              className="flex-shrink-0"
+            >
+              <ArrowLeft />
+            </Button>
+          )} 
+          que no se nos olvide esto.. o se esta mostrando la barra completa entonces escondela  
+          */

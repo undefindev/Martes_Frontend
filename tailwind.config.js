@@ -9,12 +9,13 @@ export default {
     extend: {
       colors: {
         secondary: {
-          DEFAULT: colors.neutral[200],
-          hover: colors.neutral[300],
-          border: colors.neutral[400],
-          text: colors.neutral[500],
-          dark: colors.neutral[800],
-          ["dark-hover"]: colors.neutral[900]
+          DEFAULT: colors.slate[200],
+          hover: colors.slate[300],
+          border: colors.slate[400],
+          text: colors.slate[500],
+          dark: colors.slate[900],
+          red: colors.red[400],
+          ["dark-hover"]: colors.slate[800]
         }
       }
     },
