@@ -32,21 +32,14 @@ export default function AppLayout() {
             </div>
 
             {/* main content */}
-            <main className="flex-1">
+            <div>
+              <Outlet />
+            </div>
 
-              {/* container */}
-              <section>
-                <Outlet />
-              </section>
-              {/* footer */}
-              <footer className="py-4">
-                <Footer />
-              </footer>
-            </main>
+            <footer className="py-4">
+              <Footer />
+            </footer>
           </div>
-
-
-
 
         </div>
         <ToastContainer

@@ -13,7 +13,7 @@ export default function Header() {
   const { data } = useAuth()
   if (data) return (
     <>
-      <div className="flex justify-between items-center gap-8 lg:gap-16 pt-2 mb-6 mx-4">
+      <div className="flex justify-between items-center gap-8 lg:gap-16 pt-2 mb-4 mx-4">
         {/* aside & logo */}
         <div className={`items-center flex-shrink-0 gap-4 ${showFullWidthSearch ? "hidden" : "flex"}`}>
           <Button variant='ghost' size='icon'>
@@ -46,7 +46,7 @@ export default function Header() {
               placeholder="Search"
               className="rounded-l-full border border-secondary-border shadow-inner shadow-secondary py-1 px-4 text-lg w-full focus:border-blue-500 outline-none"
             />
-            <Button className="py-2 px-4 rounded-r-full border-secondary-border border border-l-0 flex-shrink-0">
+            <Button className="py-1 px-3 rounded-r-full border-secondary-border border border-l-0 flex-shrink-0">
               <Search />
             </Button>
           </div>
