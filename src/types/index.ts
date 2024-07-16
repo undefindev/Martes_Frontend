@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-/* Auth & Users */
+/* Auth & Users schema*/
 const authSchema = z.object({
   name: z.string(),
   email: z.string().email(),
@@ -62,8 +62,16 @@ export const dashboardProjectSchema = z.array(
   })
 )
 
-/* categories */
-
 /* esto es para no generar diferentes schema */
 export type Project = z.infer<typeof projectSchema>
 export type ProjectFormData = Pick<Project, 'clientName' | 'projectName' | 'description'>
+
+/* team */
+const teamMemberSchema = userSchema.pick({
+  name: true,
+  email: true,
+  _id: true
+})
+
+export type TeamMember = z.infer<typeof teamMemberSchema>
+export type TeamMemberForm = Pick<TeamMember, 'email'>
