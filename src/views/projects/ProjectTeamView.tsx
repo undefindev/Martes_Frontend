@@ -9,7 +9,7 @@ export default function ProjectTeamView() {
   const params = useParams()
   const projectId = params.projectId!
 
-  return (
+  return ( 
     <>
       <h2 className="text-4xl font-semibold">Administrar el Equipo</h2>
       <p className=" font-light mt-4">Administra el equipo de trabajo para este projecto</p>
