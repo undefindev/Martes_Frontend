@@ -5,6 +5,7 @@ import AddTaskModal from "@/components/tasks/AddTaskModal"
 import TaskList from "@/components/tasks/TaskList"
 import EditTaskData from "@/components/tasks/EditTaskData"
 import TaskModalDetails from "@/components/tasks/TaskModalDetails"
+import { ListTodo, Undo2, UserPlus } from "lucide-react"
 
 export default function ProjectDetailsView() {
 
@@ -22,23 +23,42 @@ export default function ProjectDetailsView() {
   if (isError) return <Navigate to='/404' />
   if (data) return (
     <>
-      <h2 className="text-4xl font-semibold">{data.projectName}</h2>
-      <p className=" font-light mt-4">{data.description}</p>
-      <nav className="my-5 flex gap-2">
-        <button
-          type="button"
-          value="Guardar Cambios"
-          onClick={() => navigate(location.pathname + '?newTask=true')}
-          className="border rounded-lg py-2 px-4 font-semibold hover:bg-slate-900 hover:text-white cursor-pointer transition-colors"
-        >Nueva Tarea</button>
+      <div className="flex items-center justify-between my-4 container mx-auto">
+        <div>
+          <h2 className="text-3xl text-indigo-500 uppercase font-semibold">{data.projectName}</h2>
+          <p className="block font-serif 	font-style: italic text-xl text-start antialiased leading-relaxed tracking-normal text-gray-500 mt-2">{data.description}</p>
+        </div>
+        <nav className="flex items-center gap-2">
+          <button
+            type="button"
+            value="Guardar Cambios"
+            onClick={() => navigate(location.pathname + '?newTask=true')}
+            className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-indigo-500 transition-all hover:bg-blue-500/10 active:bg-blue-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          >
+            <span className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+              <ListTodo />
+            </span>
+          </button>
 
-        <Link
-          to={'team'}
-          className="border rounded-lg py-2 px-4 font-semibold hover:bg-slate-900 hover:text-white cursor-pointer transition-colors"
-        >
-          Colaboradores
-        </Link>
-      </nav>
+          <Link
+            to={'team'}
+            className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-indigo-500 transition-all hover:bg-blue-500/10 active:bg-blue-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          >
+            <span className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+              <UserPlus />
+            </span>
+          </Link>
+
+          <Link
+            to={'/projects'}
+            className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-indigo-500 transition-all hover:bg-blue-500/10 active:bg-blue-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          >
+            <span className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+              <Undo2 />
+            </span>
+          </Link>
+        </nav>
+      </div>
 
       <TaskList
         tasks={data.tasks}
@@ -51,3 +71,5 @@ export default function ProjectDetailsView() {
     </>
   )
 }
+
+/* la diferencia entre 'link' y 'button' es que el button ejecuta una accion, el link nada mas lleva o redirigue */

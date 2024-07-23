@@ -102,7 +102,7 @@ export default function LoginView() {
             </span>
           </p>
         </nav>
-        <p className="text-xs text-center text-gray-400">alimentate sanamete, come frutas y verduras ..chingate una caguama..</p>
+        <p className="text-xs text-center text-gray-400">alimentate sanamete, come frutas y verduras</p>
       </form>
     </>
   )

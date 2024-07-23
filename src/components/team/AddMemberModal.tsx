@@ -25,7 +25,7 @@ export default function AddMemberModal() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black/60" />
+            <div className="fixed inset-0 bg-black/40" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
@@ -39,16 +39,8 @@ export default function AddMemberModal() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-4xl transform overflow-hidden rounded-2xl bg-white text-left align-middle shadow-xl transition-all p-16">
-                  <Dialog.Title
-                    as="h3"
-                    className="font-black text-4xl  my-5"
-                  >
-                    Agregar Integrante al equipo
-                  </Dialog.Title>
-                  <p className="text-xl font-bold">Busca el nuevo integrante por email {''}
-                    <span className="text-fuchsia-600">para agregarlo al proyecto</span>
-                  </p>
+                <Dialog.Panel className="md:max-w-96 px-12 pt-12 pb-6 mx-auto md:mx-0 transform overflow-hidden rounded-2xl bg-white text-left align-middle shadow-lg transition-all p-16">
+
                   <AddMemberForm />
 
                 </Dialog.Panel>

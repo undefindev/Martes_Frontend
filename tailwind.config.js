@@ -9,7 +9,7 @@ export default {
     extend: {
       colors: {
         secondary: {
-          DEFAULT: colors.stone[100],
+          DEFAULT: colors.neutral[100],
           hover: colors.stone[200],
           border: colors.stone[300],
           text: colors.stone[400],

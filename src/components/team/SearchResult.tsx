@@ -1,19 +1,53 @@
 import { TeamMember } from "@/types/index"
 import Button from '../Button';
-import { UserPlus2 } from "lucide-react";
+import { UserPlus } from "lucide-react";
+import { useMutation } from "@tanstack/react-query";
+import { addUserToProject } from "@/api/TeamAPI";
+import { toast } from "react-toastify";
+import { useNavigate, useParams } from "react-router-dom";
 
 type SearchResultProps = {
   user: TeamMember
+  reset: () => void
 }
 
-export default function SearchResult({ user }: SearchResultProps) {
+export default function SearchResult({ user, reset }: SearchResultProps) {
+
+  /* este nada mas por si queremos que modal se cierre despues de agregar al maldito */
+  const navigate = useNavigate()
+
+  const params = useParams()
+  const projectId = params.projectId!
+
+  const { mutate } = useMutation({
+    mutationFn: addUserToProject,
+    onError: (error) => {
+      toast.error(error.message)
+    },
+    onSuccess: (data) => {
+      toast.success(data)
+      reset()
+      navigate(location.pathname, { replace: true })
+    }
+  })
+
+  const handleAddUserToProject = () => {
+    const data = {
+      projectId,
+      id: user._id
+    }
+
+    mutate(data)
+  }
+
+
   return (
     <>
       <p className="mt-8 text-center font-semibold">Resultados</p>
       <div className="flex items-center justify-between">
         <p>{user.name}</p>
-        <Button size='icon' variant='ghost'>
-          <UserPlus2 />
+        <Button size='icon' variant='ghost' onClick={handleAddUserToProject}>
+          <UserPlus />
         </Button>
       </div>
     </>

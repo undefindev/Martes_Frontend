@@ -24,41 +24,53 @@ export default function AddMemberForm() {
     mutation.mutate(data)
   }
 
+  const resetData = () => {
+    reset(),
+      mutation.reset()
+  }
+
   return (
     <>
 
       <form
-        className="mt-10 space-y-5"
+        className=""
         onSubmit={handleSubmit(handleSearchUser)}
         noValidate
       >
 
-        <div className="flex flex-col gap-3">
-          <label
-            className="font-normal text-2xl"
-            htmlFor="name"
-          >E-mail de Usuario</label>
-          <input
-            id="name"
-            type="text"
-            placeholder="E-mail del usuario a Agregar"
-            className="w-full p-3  border-gray-300 border"
-            {...register("email", {
-              required: "El Email es obligatorio",
-              pattern: {
-                value: /\S+@\S+\.\S+/,
-                message: "E-mail no válido",
-              },
-            })}
-          />
-          {errors.email && (
-            <ErrorMessage>{errors.email.message}</ErrorMessage>
-          )}
+        <h3 className="text-2xl font-semibold text-neutral-500 mb-8">Agregar Colaborador</h3>
+
+        <div className="divide-y divide-gray-100">
+          <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 pb-0">
+            <div className="relative">
+              <input
+                id="name"
+                type="text"
+                placeholder="doe@email.com"
+                className="peer placeholder-transparent h-10 w-full border-b-2 text-gray-900 focus:outline-none focus:border-indigo-400"
+                {...register("email", {
+                  required: "El Email es obligatorio",
+                  pattern: {
+                    value: /\S+@\S+\.\S+/,
+                    message: "E-mail no válido",
+                  },
+                })}
+              />
+              <label
+                className="absolute left-0 -top-3.5 text-neutral-500 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-indigo-500 peer-focus:text-sm"
+                htmlFor="name"
+              >E-mail de Usuario</label>
+
+              {errors.email && (
+                <ErrorMessage>{errors.email.message}</ErrorMessage>
+              )}
+            </div>
+          </div>
         </div>
 
         <input
           type="submit"
-          className=" bg-fuchsia-600 hover:bg-fuchsia-700 w-full p-3  text-white font-black  text-xl cursor-pointer"
+          className="w-full p-2 mt-12 rounded-xl text-white font-semibold text-xl cursor-pointer bg-purple-400"
           value='Buscar Usuario'
         />
       </form>
@@ -66,7 +78,7 @@ export default function AddMemberForm() {
       <div className="mt-8">
         {mutation.isPending && <p className="text-center">Cargando...</p>}
         {mutation.error && <p className="text-center">{mutation.error.message}</p>}
-        {mutation.data && <SearchResult user={mutation.data} />}
+        {mutation.data && <SearchResult user={mutation.data} reset={resetData} />}
       </div>
 
     </>
