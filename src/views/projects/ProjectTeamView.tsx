@@ -2,7 +2,7 @@ import { Fragment } from "react"
 import { Menu, Transition } from "@headlessui/react"
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom"
 import AddMemberModal from "@/components/team/AddMemberModal"
-import { useMutation, useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { EllipsisVerticalIcon } from "lucide-react"
 import { getProjectTeam, removeUserFromProject } from "@/api/TeamAPI"
 import { toast } from "react-toastify"
@@ -22,6 +22,9 @@ export default function ProjectTeamView() {
     retry: false
   })
 
+
+  // invalidar los queries
+  const queryClient = useQueryClient()
   // sigue la mutation
   const { mutate } = useMutation({
     mutationFn: removeUserFromProject,
@@ -30,6 +33,7 @@ export default function ProjectTeamView() {
     },
     onSuccess: (data) => {
       toast.success(data)
+      queryClient.invalidateQueries({ queryKey: ['projectTeam', projectId] })
     }
   })
 

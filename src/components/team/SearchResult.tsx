@@ -1,7 +1,7 @@
 import { TeamMember } from "@/types/index"
 import Button from '../Button';
 import { UserPlus } from "lucide-react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addUserToProject } from "@/api/TeamAPI";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
@@ -19,6 +19,9 @@ export default function SearchResult({ user, reset }: SearchResultProps) {
   const params = useParams()
   const projectId = params.projectId!
 
+
+  const queryClient = useQueryClient() // para invalidar las queries
+
   const { mutate } = useMutation({
     mutationFn: addUserToProject,
     onError: (error) => {
@@ -28,6 +31,7 @@ export default function SearchResult({ user, reset }: SearchResultProps) {
       toast.success(data)
       reset()
       navigate(location.pathname, { replace: true })
+      queryClient.invalidateQueries({ queryKey: ['projectTeam', projectId] }) // este mismo nos sirve para invalidar cuando eliminemos al colaborador
     }
   })
 
