@@ -3,7 +3,7 @@ export default function Footer() {
   return (
     <>
       <p className="text-center">
-        Martes.org - Todos los derechos Reservados bla bla bla.. chinga tu madre..!! {new Date().getFullYear()}
+        Martes.org - by a la huevona..!! Todos los derechos reservados {new Date().getFullYear()}
       </p>
     </>
   )
