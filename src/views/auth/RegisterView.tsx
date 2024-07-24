@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { UserRegistrationForm } from "@/types/index";
 import ErrorMessage from "@/components/ErrorMessage";
@@ -17,6 +17,8 @@ export default function RegisterView() {
 
   const { register, handleSubmit, reset, watch, formState: { errors } } = useForm<UserRegistrationForm>({ defaultValues: initialValues });
 
+  const navigate = useNavigate()
+
   const { mutate } = useMutation({
     mutationFn: createAccount,
     onError: (error) => {
@@ -25,6 +27,7 @@ export default function RegisterView() {
     onSuccess: (data) => {
       toast.success(data)
       reset()
+      navigate('/auth/login')
     }
   })
 
