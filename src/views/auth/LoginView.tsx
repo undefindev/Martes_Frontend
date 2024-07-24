@@ -12,7 +12,7 @@ export default function LoginView() {
     email: '',
     password: '',
   }
-  const { register, handleSubmit, formState: { errors } } = useForm({ defaultValues: initialValues })
+  const { register, handleSubmit, reset, formState: { errors } } = useForm({ defaultValues: initialValues })
 
   /* redireccionando al maldito */
   const navigate = useNavigate()
@@ -21,10 +21,12 @@ export default function LoginView() {
     mutationFn: authenticateUser,
     onError: (error) => {
       toast.error(error.message)
+      reset()
     },
     onSuccess: () => {
       toast.success('iniciando sesion')
       navigate('/')
+      reset() // no estoy seguro si funciona o si es necesario
     }
   })
 
