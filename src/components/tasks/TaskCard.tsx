@@ -32,8 +32,8 @@ export default function TaskCard({ task }: TaskCardProps) {
     <div>
       <nav>
         <div
-          /* key={task._id}
-          to={`/tasks/${task._id}`} */
+          key={task._id}
+          /* to={`/tasks/${task._id}`} */
           className="bg-indigo-50/50 flex flex-col gap-4 items-center w-full p-3 py-4 pl-4 pr-1 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-100 hover:bg-opacity-80 hover:text-blue-900 focus:bg-blue-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-50 active:bg-opacity-80 active:text-blue-900"
         >
           {/* top side */}
