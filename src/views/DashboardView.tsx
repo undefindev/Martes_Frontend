@@ -1,26 +1,131 @@
 
-import { useQuery } from "@tanstack/react-query"
-import { getProjects } from "@/api/ProjectAPI"
-import ProjectCard from '@/components/projects/ProjectCard'
+import { Fragment } from 'react'
+import { Menu, Transition } from "@headlessui/react"
+import { EllipsisVerticalIcon } from 'lucide-react'
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
+import { deleteProject, getProjects } from "@/api/ProjectAPI"
+import { Link } from "react-router-dom"
+import { useAuth } from "@/hooks/useAuth"
+import { toast } from 'react-toastify'
+import { LuPlus } from 'react-icons/lu'
 
 
 export default function DashboardView() {
+  const { data: user, isLoading: authLoading } = useAuth()
   const { data, isLoading } = useQuery({
     queryKey: ['projects'],
     queryFn: getProjects
   })
 
-  if (isLoading) return 'Cargando..'
-  /* console.log(data) */
-  if (data) return (
+  // la maldita mutacion
+  const queryClient = useQueryClient()
+  const { mutate } = useMutation({
+    mutationFn: deleteProject,
+    onError: (error) => {
+      toast.error(error.message)
+    },
+    onSuccess: (data) => {
+      toast.success(data)
+      queryClient.invalidateQueries({})
+    }
+  })
+
+
+
+  /* console.log(data)
+  console.log(user?._id) */
+
+  if (isLoading && authLoading) return 'Cargando..'
+  if (data && user) return (
     <>
       <div>
-        <h2 className="my-4">Projectos</h2>
+        <div className="flex items-center justify-between">
+          <p className="my-4">Projectos</p>
+          <nav className="my-5 ">
+
+          </nav>
+        </div>
         <div>
           <ul>
             {data.length ? (
-              <li className="grid gap-4 grid-cols-[repeat(auto-fill, minmax(300px,1fr))]">
-                {data.map(project => <ProjectCard key={project._id} project={project} />)}
+              <li className="flex flex-wrap items-center gap-4">
+                <Link
+                  className="border rounded-lg w-full h-8 md:h-64 md:w-8"
+                  to='/projects/create'
+                >
+                  <LuPlus />
+                </Link>
+                {data.map((project) => (
+                  <div className="relative p-4 md:flex flex-col justify-between w-96 h-64 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700 border"
+                    key={project._id}>
+
+                    <div className='flex justify-between'>
+                      <div>
+                        <h5 className='block font-serif text-xs'>#Category</h5>
+                        <h4 className='block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-gray-900'>{project.projectName}</h4>
+                        <h6 className='block font-sans text-base antialiased font-normal leading-normal tracking-normal'>{project.clientName}</h6>
+                        <p className=' line-clamp-2 font-sans text-base font-light leading-snug text-gray-700 '>{project.description}</p>
+                      </div>
+
+                      {/* rigth side.. tools */}
+                      <Menu as="div" className="relative flex-none">
+                        <Menu.Button className="block text-gray-500 hover:text-gray-900">
+                          <span className="sr-only">opciones</span>
+                          <EllipsisVerticalIcon className="h-9 w-9" aria-hidden="true" />
+                        </Menu.Button>
+                        <Transition as={Fragment} enter="transition ease-out duration-100"
+                          enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100"
+                          leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100"
+                          leaveTo="transform opacity-0 scale-95">
+                          <Menu.Items
+                            className="absolute right-0 z-20 mt-2 w-56 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
+                          >
+                            <Menu.Item>
+                              <Link to={`/projects/${project._id}`}
+                                className='block px-3 py-1 text-sm leading-6 text-gray-900'>
+                                Ver Proyecto
+                              </Link>
+                            </Menu.Item>
+
+                            {project.manager === user._id && (
+                              <>
+                                <Menu.Item>
+                                  <Link to={`/projects/${project._id}/edit`}
+                                    className='block px-3 py-1 text-sm leading-6 text-gray-900'>
+                                    Editar Proyecto
+                                  </Link>
+                                </Menu.Item>
+                                <Menu.Item>
+                                  <button
+                                    type='button'
+                                    className='block px-3 py-1 text-sm leading-6 text-red-500'
+                                    onClick={() => mutate(project._id)}
+                                  >
+                                    Eliminar Proyecto
+                                  </button>
+                                </Menu.Item>
+                              </>
+                            )}
+                          </Menu.Items>
+                        </Transition>
+                      </Menu>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <p className="block font-sans text-base antialiased font-normal leading-relaxed text-inherit">
+                        January 10
+                      </p>
+                      <div className="flex items-center -space-x-3">
+                        <img alt="natali craig"
+                          src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1061&amp;q=80"
+                          className="relative inline-block h-9 w-9 !rounded-full  border-2 border-white object-cover object-center hover:z-10" />
+                        <img alt="Tania Andrew"
+                          src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1480&amp;q=80"
+                          className="relative inline-block h-9 w-9 !rounded-full  border-2 border-white object-cover object-center hover:z-10" />
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </li>
             ) : (
               <p>mas triste</p>
@@ -36,6 +141,8 @@ export default function DashboardView() {
   )
 }
 
+
+/* key={project._id} project={project} />) */
 
 /* <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />

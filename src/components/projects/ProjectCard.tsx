@@ -27,15 +27,15 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     }
   })
   return (
-    <div className="relative flex max-w-[24rem] flex-col overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700 border"
+    <div className="relative p-4 md:flex flex-col justify-between w-96 h-64 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700 border"
       key={project._id}>
 
-      <div className='flex items-center justify-between p-6'>
+      <div className='flex justify-between'>
         <div>
-          <h5 className='block font-serif text-xs pl-2 py-1'>#Category</h5>
-          <h4 className='block font-sans text-lg antialiased font-semibold leading-snug tracking-normal text-gray-900'>{project.projectName}</h4>
+          <h5 className='block font-serif text-xs'>#Category</h5>
+          <h4 className='block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-gray-900'>{project.projectName}</h4>
           <h6 className='block font-sans text-base antialiased font-normal leading-normal tracking-normal'>{project.clientName}</h6>
-          <p className='block mt-3 font-sans text-base antialiased font-light leading-relaxed text-gray-700 '>{project.description}</p>
+          <p className=' line-clamp-2 font-sans text-base font-light leading-snug text-gray-700 '>{project.description}</p>
         </div>
 
         {/* rigth side.. tools */}
@@ -49,7 +49,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95">
             <Menu.Items
-              className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
+              className="absolute right-0 z-20 mt-2 w-56 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
             >
               <Menu.Item>
                 <Link to={`/projects/${project._id}`}
@@ -78,7 +78,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </Menu>
       </div>
 
-      <div className="flex items-center justify-between p-6">
+      <div className="flex items-center justify-between">
         <p className="block font-sans text-base antialiased font-normal leading-relaxed text-inherit">
           January 10
         </p>
