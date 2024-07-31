@@ -50,21 +50,29 @@ export default function DashboardView() {
             {data.length ? (
               <li className="flex flex-wrap items-center gap-4">
                 <Link
-                  className="border rounded-lg w-full h-8 md:h-64 md:w-8"
+                  className=" relative border rounded-xl w-full h-8 md:h-48 md:w-8 flex items-center justify-center"
                   to='/projects/create'
                 >
                   <LuPlus />
+                  <p className=' absolute bg-cyan-50/50 p-1.5 rounded z-10 text-xs'>Nuevo Poyecto</p>
                 </Link>
                 {data.map((project) => (
-                  <div className="relative p-4 md:flex flex-col justify-between w-96 h-64 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700 border"
+                  <div className="relative p-4 md:flex flex-col justify-between w-96 h-48 overflow-hidden rounded-3xl bg-white bg-clip-border text-gray-700 border"
                     key={project._id}>
 
                     <div className='flex justify-between'>
                       <div>
-                        <h5 className='block font-serif text-xs'>#Category</h5>
-                        <h4 className='block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-gray-900'>{project.projectName}</h4>
-                        <h6 className='block font-sans text-base antialiased font-normal leading-normal tracking-normal'>{project.clientName}</h6>
-                        <p className=' line-clamp-2 font-sans text-base font-light leading-snug text-gray-700 '>{project.description}</p>
+                        <div>
+                          {project.manager === user._id ?
+                            <h5 className='block font-sans text-xs text-teal-500'>#Manager</h5>
+                            :
+                            <h5 className='block font-sans text-xs text-indigo-500'>#Colaborador</h5>
+                          }
+                        </div>
+
+                        <h4 className=' line-clamp-1 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-gray-900'>{project.projectName}</h4>
+                        <h6 className='block font-sans text-sm font-style: italic text-gray-500 antialiased leading-normal tracking-normal'>{project.clientName}</h6>
+                        <p className=' line-clamp-2 font-serif text-base font-light leading-snug text-gray-700 '>{project.description}</p>
                       </div>
 
                       {/* rigth side.. tools */}
