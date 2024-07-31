@@ -5,10 +5,12 @@ import AddTaskModal from "@/components/tasks/AddTaskModal"
 import TaskList from "@/components/tasks/TaskList"
 import EditTaskData from "@/components/tasks/EditTaskData"
 import TaskModalDetails from "@/components/tasks/TaskModalDetails"
-import { ListTodo, Undo2, UserPlus } from "lucide-react"
+import { useAuth } from "@/hooks/useAuth"
+import { isManager } from "@/utils/policies"
 
 export default function ProjectDetailsView() {
 
+  const { data: user, isLoading: authLoading } = useAuth()
   const navigate = useNavigate()
 
   const params = useParams()
@@ -19,46 +21,40 @@ export default function ProjectDetailsView() {
     retry: false
   })
 
-  if (isLoading) return '..Cargando'
+  if (isLoading && authLoading) return '..Cargando'
   if (isError) return <Navigate to='/404' />
-  if (data) return (
+  if (data && user) return (
     <>
-      <div className="flex items-center justify-between my-4 container mx-auto">
-        <div>
-          <h2 className="text-3xl text-indigo-500 uppercase font-semibold">{data.projectName}</h2>
-          <p className="block font-serif 	font-style: italic text-xl text-start antialiased leading-relaxed tracking-normal text-gray-500 mt-2">{data.description}</p>
-        </div>
-        <nav className="flex items-center gap-2">
+      <h2 className="text-3xl text-indigo-500 font-semibold">{data.projectName}</h2>
+      <p className="w-3/4 line-clamp-2 font-light	font-style: italic text-lg text-start antialiased leading-relaxed tracking-normal text-gray-500 mt-2">
+        {data.description}
+      </p>
+
+      {isManager(data.manager, user._id) && (
+        <nav className="flex gap-2 my-4">
           <button
             type="button"
-            value="Guardar Cambios"
             onClick={() => navigate(location.pathname + '?newTask=true')}
-            className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-indigo-500 transition-all hover:bg-blue-500/10 active:bg-blue-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            className="bg-cyan-400 hover:bg-cyan-500 px-6 py-2 rounded-lg text-white font-semibold cursor-pointer transition-colors"
           >
-            <span className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-              <ListTodo />
-            </span>
+            Nueva Tarea
           </button>
 
           <Link
             to={'team'}
-            className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-indigo-500 transition-all hover:bg-blue-500/10 active:bg-blue-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            className="bg-cyan-400 hover:bg-cyan-500 px-8 py-2 rounded-lg text-white font-semibold cursor-pointer transition-colors"
           >
-            <span className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-              <UserPlus />
-            </span>
+            Colaboradores
           </Link>
 
           <Link
-            to={'/projects'}
-            className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-indigo-500 transition-all hover:bg-blue-500/10 active:bg-blue-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            to={'/'}
+            className="bg-cyan-400 hover:bg-cyan-500 px-6 py-2 rounded-lg text-white font-semibold cursor-pointer transition-colors"
           >
-            <span className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-              <Undo2 />
-            </span>
+            Volver al Projecto
           </Link>
         </nav>
-      </div>
+      )}
 
       <TaskList
         tasks={data.tasks}

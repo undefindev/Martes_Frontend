@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 import ProjectForm from "@/components/projects/ProjectForm"
 import { ProjectFormData } from "@/types/index"
 import { createProject } from '@/api/ProjectAPI'
+import { LuCornerUpLeft } from "react-icons/lu"
 
 export default function CreateProjectView() {
 
@@ -31,16 +32,16 @@ export default function CreateProjectView() {
   const handleForm = (formData: ProjectFormData) => mutate(formData) // una sola linea en el arrowFunction no ocupa las llaves
   return (
     <>
-      <div className="bg-slate-50">
+      <div className="relative p-4 md:flex flex-col justify-between w-96 overflow-hidden rounded-2xl bg-white bg-clip-border text-gray-700 border mx-auto items-center">
+        <div>
+          <h2 className="text-2xl font-semibold text-gray-600">Nuevo Proyecto</h2>
+        </div>
+
         <form
           onSubmit={handleSubmit(handleForm)}
           noValidate
-          className='bg-white rounded-xl mx-auto md:max-w-96 px-12 pt-12 pb-6'
+          className='mx-auto'
         >
-
-          <div>
-            <h2 className="text-2xl font-semibold text-gray-600 mb-8">Nuevo Proyecto</h2>
-          </div>
 
           <ProjectForm
             register={register} // estas son las props
@@ -48,16 +49,16 @@ export default function CreateProjectView() {
 
           />
 
-          <nav className="mt-4 flex items-center justify-between gap-2">
+          <nav className="flex items-center gap-4 mt-8">
             <input
               type="submit"
               value="Crear Proyecto"
-              className="w-full p-2 mt-12 rounded-xl text-white font-semibold text-xl cursor-pointer bg-indigo-400"
+              className="w-full p-2 rounded-md border cursor-pointer"
             />
             <Link
               to='/'
-              className="p-2 mt-12 rounded-full text-white font-semibold text-xl cursor-pointer bg-gradient-to-r from-cyan-400 via-indigo-500 to-purple-400" >
-              Home
+              className="border rounded-md p-2" >
+              <LuCornerUpLeft className="w-6 h-6" />
             </Link>
           </nav>
 
@@ -65,5 +66,43 @@ export default function CreateProjectView() {
         </form>
       </div>
     </>
+
+
+
   )
 }
+
+{/* 
+  este es el original del projecto
+  <>
+      <div className="max-w-3xl mx-auto">
+        <h1 className="text-5xl font-black">Crear Proyecto</h1>
+        <p className="text-2xl font-light text-gray-500 mt-5">Llena el siguiente formulario para crear un proyecto</p>
+
+        <nav className="my-5 ">
+          <Link
+            className=" bg-purple-400 hover:bg-purple-500 px-10 py-3 text-white text-xl font-bold cursor-pointer transition-colors"
+            to='/'
+          >Volver a Proyectos</Link>
+        </nav>
+
+        <form
+          className="mt-10 bg-white shadow-lg p-10 rounded-lg"
+          onSubmit={handleSubmit(handleForm)}
+          noValidate
+        >
+
+          <ProjectForm
+            register={register}
+            errors={errors}
+          />
+
+          <input
+            type="submit"
+            value='Crear Proyecto'
+            className=" bg-fuchsia-600 hover:bg-fuchsia-700 w-full p-3 text-white uppercase font-bold cursor-pointer transition-colors"
+          />
+        </form>
+      </div>
+    </>
+  */}

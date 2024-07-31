@@ -8,10 +8,11 @@ import { Link } from "react-router-dom"
 import { useAuth } from "@/hooks/useAuth"
 import { toast } from 'react-toastify'
 import { LuPlus } from 'react-icons/lu'
+import { isManager } from '../utils/policies';
 
 
 export default function DashboardView() {
-  const { data: user, isLoading: authLoading } = useAuth()
+  const { data: user, isLoading: authLoading } = useAuth() // esto para que no choquen las variables
   const { data, isLoading } = useQuery({
     queryKey: ['projects'],
     queryFn: getProjects
@@ -26,7 +27,7 @@ export default function DashboardView() {
     },
     onSuccess: (data) => {
       toast.success(data)
-      queryClient.invalidateQueries({})
+      queryClient.invalidateQueries({ queryKey: ['projects'] })
     }
   })
 
@@ -54,7 +55,7 @@ export default function DashboardView() {
                   to='/projects/create'
                 >
                   <LuPlus />
-                  <p className=' absolute bg-cyan-50/50 p-1.5 rounded z-10 text-xs'>Nuevo Poyecto</p>
+                  {/* <p className=' absolute bg-cyan-50/50 p-1.5 rounded z-10 text-xs'>Nuevo Poyecto</p> */}
                 </Link>
                 {data.map((project) => (
                   <div className="relative p-4 md:flex flex-col justify-between w-96 h-48 overflow-hidden rounded-3xl bg-white bg-clip-border text-gray-700 border"
@@ -63,7 +64,7 @@ export default function DashboardView() {
                     <div className='flex justify-between'>
                       <div>
                         <div>
-                          {project.manager === user._id ?
+                          {isManager(project.manager, user._id) ?
                             <h5 className='block font-sans text-xs text-teal-500'>#Manager</h5>
                             :
                             <h5 className='block font-sans text-xs text-indigo-500'>#Colaborador</h5>
@@ -95,7 +96,7 @@ export default function DashboardView() {
                               </Link>
                             </Menu.Item>
 
-                            {project.manager === user._id && (
+                            {isManager(project.manager, user._id) && (
                               <>
                                 <Menu.Item>
                                   <Link to={`/projects/${project._id}/edit`}

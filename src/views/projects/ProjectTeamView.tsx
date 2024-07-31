@@ -42,19 +42,19 @@ export default function ProjectTeamView() {
   if (data)
     return (
       <>
-        <h2 className="text-4xl font-semibold">Administrar el Equipo</h2>
-        <p className=" font-light mt-4">Administra el equipo de trabajo para este projecto</p>
+        <h2 className="text-3xl text-indigo-500 font-semibold">Administrar el Equipo</h2>
+        <p className=" w-3/4 line-clamp-2 font-light	font-style: italic text-lg text-start antialiased leading-relaxed tracking-normal text-gray-500 mt-2">Administra el equipo de trabajo para este projecto</p>
         <nav className="my-5 flex gap-2">
           <button
             type="button"
             value="Guardar Cambios"
             onClick={() => navigate(location.pathname + '?addMember=true')}
-            className="border rounded-lg py-2 px-4 font-semibold hover:bg-slate-900 hover:text-white cursor-pointer transition-colors"
+            className="bg-cyan-400 hover:bg-cyan-500 px-6 py-2 rounded-lg text-white font-semibold cursor-pointer transition-colors"
           >Agregar Colaborador</button>
 
           <Link
             to={`/projects/${projectId}`}
-            className="border rounded-lg py-2 px-4 font-semibold hover:bg-slate-900 hover:text-white cursor-pointer transition-colors"
+            className="bg-cyan-400 hover:bg-cyan-500 px-6 py-2 rounded-lg text-white font-semibold cursor-pointer transition-colors"
           >
             Volver al Projecto
           </Link>
