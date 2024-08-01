@@ -39,7 +39,7 @@ export default function RegisterView() {
     <>
       <form
         onSubmit={handleSubmit(handleRegister)}
-        className="bg-neutral-100 shadow-lg rounded-2xl md:max-w-96 p-12 mx-4 md:mx-0"
+        className="shadow-lg rounded-2xl md:max-w-96 p-12 mx-4 md:mx-0"
         noValidate
       >
         <h3 className="text-2xl font-semibold text-neutral-500 mb-8">Crear Cuenta</h3>
@@ -50,7 +50,7 @@ export default function RegisterView() {
                 id="email"
                 type="email"
                 placeholder="doe@email.com"
-                className="bg-neutral-100 peer placeholder-transparent h-10 w-full border-b-2 border-neutral-300 text-gray-900 focus:outline-none focus:border-indigo-400"
+                className="bg-slate-100 peer placeholder-transparent h-10 w-full border-b-2 border-neutral-300 text-gray-900 focus:outline-none focus:border-indigo-400"
                 {...register("email", {
                   required: "El Email de registro es obligatorio",
                   pattern: {
@@ -72,7 +72,7 @@ export default function RegisterView() {
               <input
                 type="name"
                 placeholder="nombre de Usuario"
-                className="bg-neutral-100 peer placeholder-transparent h-10 w-full border-b-2 border-neutral-300 text-gray-900 focus:outline-none focus:border-indigo-400"
+                className="bg-slate-100 peer placeholder-transparent h-10 w-full border-b-2 border-neutral-300 text-gray-900 focus:outline-none focus:border-indigo-400"
                 {...register("name", {
                   required: "El Nombre de usuario es obligatorio",
                 })}
@@ -91,7 +91,7 @@ export default function RegisterView() {
               <input
                 type="password"
                 placeholder="crea una contraseña"
-                className="bg-neutral-100 peer placeholder-transparent h-10 w-full border-b-2 border-neutral-300 text-gray-900 focus:outline-none focus:border-indigo-400"
+                className="bg-slate-100 peer placeholder-transparent h-10 w-full border-b-2 border-neutral-300 text-gray-900 focus:outline-none focus:border-indigo-400"
                 {...register("password", {
                   required: "El Password es obligatorio",
                   minLength: {
@@ -115,7 +115,7 @@ export default function RegisterView() {
                 id="password_confirmation"
                 type="password"
                 placeholder="repite tu contraseña"
-                className="bg-neutral-100 peer placeholder-transparent h-10 w-full border-b-2 border-neutral-300 text-gray-900 focus:outline-none focus:border-indigo-400"
+                className="bg-slate-100 peer placeholder-transparent h-10 w-full border-b-2 border-neutral-300 text-gray-900 focus:outline-none focus:border-indigo-400"
                 {...register("password_confirmation", {
                   required: "Repetir Password es obligatorio",
                   validate: value => value === password || 'Los Passwords no son iguales'

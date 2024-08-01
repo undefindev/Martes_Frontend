@@ -36,7 +36,7 @@ export default function LoginView() {
     <>
       <form
         onSubmit={handleSubmit(handleLogin)}
-        className="bg-neutral-100 shadow-lg rounded-2xl md:max-w-96 px-12 pt-12 pb-6 mx-4 md:mx-0"
+        className="shadow-lg rounded-2xl md:max-w-96 px-12 pt-12 pb-6 mx-4 md:mx-0"
         noValidate
       >
         <h3 className="text-2xl font-semibold text-neutral-500 mb-8">Login</h3>
@@ -47,7 +47,7 @@ export default function LoginView() {
                 id="email"
                 type="email"
                 placeholder="doe@email.com"
-                className="bg-neutral-100 peer placeholder-transparent h-10 w-full border-b-2 border-neutral-300 text-gray-900 focus:outline-none focus:border-indigo-400"
+                className="bg-slate-100 peer placeholder-transparent h-10 w-full border-b-2 border-neutral-300 text-gray-900 focus:outline-none focus:border-indigo-400"
                 {...register("email", {
                   required: "El Email es obligatorio",
                   pattern: {
@@ -66,7 +66,7 @@ export default function LoginView() {
               <input
                 type="password"
                 placeholder="escribe tu contraseña"
-                className="bg-neutral-100 peer placeholder-transparent h-10 w-full border-b-2 border-neutral-300 text-gray-900 focus:outline-none focus:border-indigo-400"
+                className="bg-slate-100 peer placeholder-transparent h-10 w-full border-b-2 border-neutral-300 text-gray-900 focus:outline-none focus:border-indigo-400"
                 {...register("password", {
                   required: "El Password es obligatorio",
                 })}
@@ -89,7 +89,7 @@ export default function LoginView() {
         <input
           type="submit"
           value='Iniciar Sesión'
-          className="w-full p-2 mt-12 rounded-full text-white font-semibold text-xl cursor-pointer bg-gradient-to-r from-cyan-400 via-indigo-500 to-purple-400"
+          className="w-full p-2 mt-12 rounded-xl text-white font-semibold text-xl cursor-pointer bg-gradient-to-r from-cyan-400 via-indigo-500 to-purple-400"
         />
 
         <nav className="mt-8 flex flex-col space-y-4 text-center">
