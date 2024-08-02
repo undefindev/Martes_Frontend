@@ -71,33 +71,31 @@ export default function DashboardView() {
                           }
                         </div>
 
-                        <h4 className=' line-clamp-1 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-gray-900'>{project.projectName}</h4>
+                        <Link
+                          to={`/projects/${project._id}`}
+                          className=' line-clamp-1 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-gray-900'>
+                          {project.projectName}
+                        </Link>
                         <h6 className='block font-sans text-sm font-style: italic text-gray-500 antialiased leading-normal tracking-normal'>{project.clientName}</h6>
                         <p className=' line-clamp-2 font-serif text-base font-light leading-snug text-gray-700 '>{project.description}</p>
                       </div>
 
                       {/* rigth side.. tools */}
-                      <Menu as="div" className="relative flex-none">
-                        <Menu.Button className="block text-gray-500 hover:text-gray-900">
-                          <span className="sr-only">opciones</span>
-                          <EllipsisVerticalIcon className="h-9 w-9" aria-hidden="true" />
-                        </Menu.Button>
-                        <Transition as={Fragment} enter="transition ease-out duration-100"
-                          enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100"
-                          leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100"
-                          leaveTo="transform opacity-0 scale-95">
-                          <Menu.Items
-                            className="absolute right-0 z-20 mt-2 w-56 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
-                          >
-                            <Menu.Item>
-                              <Link to={`/projects/${project._id}`}
-                                className='block px-3 py-1 text-sm leading-6 text-gray-900'>
-                                Ver Proyecto
-                              </Link>
-                            </Menu.Item>
+                      {isManager(project.manager, user._id) && (
+                        <>
+                          <Menu as="div" className="relative flex-none">
+                            <Menu.Button className="block text-gray-500 hover:text-gray-900">
+                              <span className="sr-only">opciones</span>
+                              <EllipsisVerticalIcon className="h-9 w-9" aria-hidden="true" />
+                            </Menu.Button>
+                            <Transition as={Fragment} enter="transition ease-out duration-100"
+                              enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100"
+                              leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100"
+                              leaveTo="transform opacity-0 scale-95">
+                              <Menu.Items
+                                className="absolute right-0 z-20 mt-2 w-56 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
+                              >
 
-                            {isManager(project.manager, user._id) && (
-                              <>
                                 <Menu.Item>
                                   <Link to={`/projects/${project._id}/edit`}
                                     className='block px-3 py-1 text-sm leading-6 text-gray-900'>
@@ -113,11 +111,12 @@ export default function DashboardView() {
                                     Eliminar Proyecto
                                   </button>
                                 </Menu.Item>
-                              </>
-                            )}
-                          </Menu.Items>
-                        </Transition>
-                      </Menu>
+                              </Menu.Items>
+                            </Transition>
+                          </Menu>
+                        </>
+                      )}
+
                     </div>
 
                     <div className="flex items-center justify-between">
