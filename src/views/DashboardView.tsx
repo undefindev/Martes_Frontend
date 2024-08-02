@@ -49,7 +49,7 @@ export default function DashboardView() {
         <div>
           <ul>
             {data.length ? (
-              <li className="flex flex-wrap items-center gap-4">
+              <li className="md:flex md:flex-wrap items-center gap-4">
                 <Link
                   className=" relative border rounded-xl w-full h-8 md:h-48 md:w-8 flex items-center justify-center"
                   to='/projects/create'
@@ -62,7 +62,7 @@ export default function DashboardView() {
                     key={project._id}>
 
                     <div className='flex justify-between'>
-                      <div>
+                      <div className='px-1'>
                         <div>
                           {isManager(project.manager, user._id) ?
                             <h5 className='block font-sans text-xs text-teal-500'>#Manager</h5>
@@ -137,15 +137,22 @@ export default function DashboardView() {
                 ))}
               </li>
             ) : (
-              <p>mas triste</p>
+              <div>
+                <p>
+                  Mas Triste...
+                  <Link
+                    className="text-cyan-500"
+                    to='/projects/create'
+                  >
+                    Crear Proyecto
+                  </Link>
+                </p>
+
+              </div>
             )}
           </ul>
         </div>
       </div>
-
-
-
-
     </>
   )
 }
