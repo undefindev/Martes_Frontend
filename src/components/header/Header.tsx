@@ -2,20 +2,19 @@ import { useAuth } from "@/hooks/useAuth";
 import NavMenu from "../NavMenu";
 import { Link } from "react-router-dom";
 import Logo from "../Logo";
-import { ArrowLeft, Bell, Menu, Mic, Search, Users } from "lucide-react";
+import { Menu, Users } from "lucide-react";
 import Button from "../Button";
-import { useState } from "react";
+
 
 export default function Header() {
 
-  const [showFullWidthSearch, setShowFullWidthSearch] = useState(false)
 
   const { data } = useAuth()
   if (data) return (
     <>
       <div className="flex justify-between items-center gap-8 lg:gap-16 pt-2 mb-4 mx-4">
         {/* aside & logo */}
-        <div className={`items-center flex-shrink-0 gap-4 ${showFullWidthSearch ? "hidden" : "flex"}`}>
+        <div className="flex items-center flex-shrink-0 gap-4">
           <Button variant='ghost' size='icon'>
             <Menu />
           </Button>
@@ -25,7 +24,7 @@ export default function Header() {
         </div>
 
         {/* search bar */}
-        <form className={`flex-grow justify-center gap-4 ${showFullWidthSearch ? "flex" : "hidden md:flex"}`}>
+        {/* <form className={`flex-grow justify-center gap-4 ${showFullWidthSearch ? "flex" : "hidden md:flex"}`}>
 
           {showFullWidthSearch && (
             <Button
@@ -39,7 +38,7 @@ export default function Header() {
             </Button>
           )}
 
-          {/* la barrita de busqueda */}
+          {/* la barrita de busqueda *
           <div className="flex flex-grow max-w-[600px]">
             <input
               type="search"
@@ -51,31 +50,14 @@ export default function Header() {
             </Button>
           </div>
 
-          {/* microchono */}
+          {/* microchono
           <Button size="icon" type="button" className="flex-shrink-0">
             <Mic />
           </Button>
-        </form>
+        </form> */}
 
         {/* sign in & team colaborators */}
-        <div className={`flex-shrink-0 items-center md:gap-2 ${showFullWidthSearch ? "hidden" : "flex"}`}>
-          {/* notifications */}
-          <Button
-            size="icon"
-            variant="ghost"
-            className="md:hidden"
-            onClick={() => setShowFullWidthSearch(true)}
-          >
-            <Search />
-          </Button>
-
-          <Button size="icon" variant="ghost" className="md:hidden">
-            <Mic />
-          </Button>
-
-          <Button size="icon" variant="ghost">
-            <Bell />
-          </Button>
+        <div className="flex flex-shrink-0 items-center md:gap-2">
 
           {/* team or colaboradores */}
           <div>

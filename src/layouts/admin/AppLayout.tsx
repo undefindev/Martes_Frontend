@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from "@/hooks/useAuth";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
-import CategoryPills from "@/components/CategoryPills";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 
 
@@ -26,9 +26,9 @@ export default function AppLayout() {
           {/* aside */}
           <aside>sidebar</aside>
           <div className=" overflow-x-hidden px-8 pb-4">
-            {/* categories */}
+            {/* breadcrumbs */}
             <div className=" sticky top-0 z-10 pb-4">
-              <CategoryPills />
+              <Breadcrumbs />
             </div>
 
             {/* main content */}
