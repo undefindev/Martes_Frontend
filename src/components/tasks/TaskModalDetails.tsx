@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { formatDate } from '@/utils/utils';
 import { statusTranslation } from '@/locales/es';
 import { TaskStatus } from '@/types/index';
+import NotesPanel from '../notes/NotesPanel';
 
 
 export default function TaskModalDetails() {
@@ -99,14 +100,21 @@ export default function TaskModalDetails() {
                   </Dialog.Title>
                   <p className='text-lg text-slate-500 mb-2'>Descripción: {data.description}</p>
 
-                  <p>Historial de Cambios</p>
-                  <ul className=' list-decimal'>
-                    {data.completedBy.map((activityLog) => (
-                      <li key={activityLog._id}>
-                        <span>{statusTranslation[activityLog.status]}</span>{' '}por: {activityLog.user.name}
-                      </li>
-                    ))}
-                  </ul>
+
+                  {/* esta es otra mamada que se le acaba de ocurrir al profe */}
+                  {data.completedBy.length ? (
+                    <>
+                      <p>Historial de Cambios</p>
+                      <ul className=' list-decimal'>
+                        {data.completedBy.map((activityLog) => (
+                          <li key={activityLog._id}>
+                            <span>{statusTranslation[activityLog.status]}</span>{' '}por: {activityLog.user.name}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  ) : null}
+
 
 
 
@@ -122,6 +130,9 @@ export default function TaskModalDetails() {
                       ))}
                     </select>
                   </div>
+
+                  <NotesPanel />
+
                 </Dialog.Panel>
               </Transition.Child>
             </div>
