@@ -9,7 +9,7 @@ const authSchema = z.object({
   token: z.string()
 })
 
-/* estos son los types */
+/* estos son los types del auth */
 type Auth = z.infer<typeof authSchema>
 export type UserLoginForm = Pick<Auth, 'email' | 'password'>
 export type UserRegistrationForm = Pick<Auth, 'name' | 'email' | 'password' | 'password_confirmation'>
@@ -26,6 +26,17 @@ export const userSchema = authSchema.pick({
   _id: z.string()
 })
 export type User = z.infer<typeof userSchema>
+
+/* notes */
+const noteSchema = z.object({
+  _id: z.string(),
+  content: z.string(),
+  createdBy: userSchema,
+  task: z.string()
+})
+
+export type Note = z.infer<typeof noteSchema>
+export type NoteFormData = Pick<Note, 'content'>
 
 /* tasks */
 export const taskStatusSchema = z.enum(["pending", "onHold", "inProgress", "underReview", "completed"])
@@ -83,3 +94,13 @@ const teamMemberSchema = userSchema.pick({
 export const teamMembersSchema = z.array(teamMemberSchema)
 export type TeamMember = z.infer<typeof teamMemberSchema>
 export type TeamMemberForm = Pick<TeamMember, 'email'>
+
+/* breadcrumbs */
+const trailSchema = z.object({
+  projectName: projectSchema,
+  taskName: taskSchema
+})
+
+export type Trail = z.infer<typeof trailSchema>
+export type TrailPoject = Pick<Trail, 'projectName'>
+export type TrailTask = Pick<Trail, 'taskName'>

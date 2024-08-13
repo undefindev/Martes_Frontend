@@ -1,12 +1,10 @@
+// esta es la vista principal despues de login..
 import { Navigate, Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from "@/hooks/useAuth";
 import Footer from "@/components/footer/Footer";
-import Header from "@/components/header/Header";
-import Breadcrumbs from "@/components/Breadcrumbs";
-
-
+import Navbar from "@/components/header/Navbar";
 
 export default function AppLayout() {
 
@@ -20,27 +18,18 @@ export default function AppLayout() {
   if (data) return (
     <>
       <div className="max-h-screen flex flex-col">
-        <Header />
         {/* navbar & main content */}
-        <div className="grid grid-cols-[auto_1fr] flex-grow overflow-auto">
-          {/* aside */}
-          <aside>sidebar</aside>
-          <div className=" overflow-x-hidden px-8 pb-4">
-            {/* breadcrumbs */}
-            <div className=" sticky top-0 z-10 pb-4">
-              <Breadcrumbs />
-            </div>
-
-            {/* main content */}
-            <div>
-              <Outlet />
-            </div>
-
-            <footer className="py-4">
-              <Footer />
-            </footer>
+        <div className="h-full">
+          <Navbar />
+        </div>
+        {/* main Content */}
+        <main className={`h-full flex-none transition-all`}>
+          <div className="pt-5s mx-auto  mb-auto h-full min-h-[84vh p-2 md:pr-2]">
+            <Outlet />
           </div>
-
+        </main>
+        <div>
+          <Footer />
         </div>
         <ToastContainer
           pauseOnHover={false}
