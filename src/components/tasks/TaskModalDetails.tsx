@@ -104,7 +104,7 @@ export default function TaskModalDetails() {
                   {/* esta es otra mamada que se le acaba de ocurrir al profe */}
                   {data.completedBy.length ? (
                     <>
-                      <p>Historial de Cambios</p>
+                      <p className='font-semibold my-2'>Historial de Cambios</p>
                       <ul className=' list-decimal'>
                         {data.completedBy.map((activityLog) => (
                           <li key={activityLog._id}>
@@ -119,7 +119,7 @@ export default function TaskModalDetails() {
 
 
                   <div className='my-5 space-y-3'>
-                    <label className='font-bold'>Estado Actual:</label>
+                    <label className='font-semibold'>Estado Actual:</label>
                     <select
                       className='w-full px-3 py-2 border rounded-md'
                       defaultValue={data.status} // para que seleccione la opcion correcta del estado
@@ -131,7 +131,9 @@ export default function TaskModalDetails() {
                     </select>
                   </div>
 
-                  <NotesPanel />
+                  <NotesPanel
+                    notes={data.notes}
+                  />
 
                 </Dialog.Panel>
               </Transition.Child>
