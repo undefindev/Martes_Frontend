@@ -14,7 +14,7 @@ export default function NotesPanel({ notes }: NotesPanelProps) {
         {notes.length ? (
           <>
             <p className="font-semibold my-4">Notas:</p>
-            {notes.map(note => <NoteDetail />)}
+            {notes.map(note => <NoteDetail key={note._id} note={note} />)}
           </>
         ) : <p>No hay Notas</p>}
       </div>

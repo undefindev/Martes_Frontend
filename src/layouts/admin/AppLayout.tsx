@@ -17,7 +17,7 @@ export default function AppLayout() {
 
   if (data) return (
     <>
-      <div className="max-h-screen flex flex-col">
+      <div className="max-h-screen flex flex-col p-4">
         {/* navbar & main content */}
         <div className="h-full">
           <Navbar />
