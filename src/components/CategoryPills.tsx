@@ -1,11 +1,17 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Button from "./Button";
 import { useEffect, useRef, useState } from "react";
+import { Project, Task } from "../types";
+
+type TrailType = {
+  project: Project['projectName']
+  task: Task['name']
+}
 
 
 const TRANSLATE_AMOUNT = 200
 
-export default function CategoryPills() {
+export default function CategoryPills({ project, task }: TrailType) {
 
   const [translate, setTranslate] = useState(0)
   const [isLeftVisible, setIsLeftVisible] = useState(false)

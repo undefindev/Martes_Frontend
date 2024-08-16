@@ -99,12 +99,3 @@ export const teamMembersSchema = z.array(teamMemberSchema)
 export type TeamMember = z.infer<typeof teamMemberSchema>
 export type TeamMemberForm = Pick<TeamMember, 'email'>
 
-/* breadcrumbs */
-const trailSchema = z.object({
-  projectName: projectSchema,
-  taskName: taskSchema
-})
-
-export type Trail = z.infer<typeof trailSchema>
-export type TrailPoject = Pick<Trail, 'projectName'>
-export type TrailTask = Pick<Trail, 'taskName'>

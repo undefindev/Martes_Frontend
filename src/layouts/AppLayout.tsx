@@ -17,20 +17,22 @@ export default function AppLayout() {
 
   if (data) return (
     <>
-      <div className="max-h-screen flex flex-col p-4">
-        {/* navbar & main content */}
-        <div className="h-full">
-          <Navbar />
-        </div>
+      <div>
+        <aside>M</aside>
         {/* main Content */}
-        <main className={`h-full flex-none transition-all`}>
-          <div className="pt-5s mx-auto  mb-auto h-full min-h-[84vh p-2 md:pr-2]">
+        <main>
+          {/* navbar & main content */}
+          <div>
+            <Navbar />
+          </div>
+          <div>
             <Outlet />
           </div>
+          <div>
+            <Footer />
+          </div>
         </main>
-        <div>
-          <Footer />
-        </div>
+
         <ToastContainer
           pauseOnHover={false}
           pauseOnFocusLoss={false}
@@ -40,4 +42,4 @@ export default function AppLayout() {
   )
 }
 
-/* h-screen grid grid-rows-[auto_1fr_auto] */
+/* h-screen grid grid-rows-[auto_1fr] */
