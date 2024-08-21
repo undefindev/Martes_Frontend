@@ -17,13 +17,13 @@ export default function AppLayout() {
 
   if (data) return (
     <>
-      <div className="bg-teal-100 max-h-screen flex flex-col">
+      <div className="max-h-screen flex flex-col">
         {/* navbar */}
         <Navbar />
         {/* main Content */}
         <main className="grid grid-cols-[auto_1fr] flex-grow-1 overflow-auto">
-          <aside className="bg-rose-100">Sidebar</aside>
-          <div className="sticky top-0 bg-gray-100 z-10 p-4">
+          <aside>Sidebar</aside>
+          <div className="sticky top-0 bg-neutral-50 z-10 p-4 border rounded-xl mx-4 overflow-y-scroll">
             <Trails />
             <Outlet />
           </div>
