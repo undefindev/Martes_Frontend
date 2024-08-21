@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import Button from "./Button";
+import Button from "./Icon";
 import { useEffect, useRef, useState } from "react";
 import { Project, Task } from "../types";
 

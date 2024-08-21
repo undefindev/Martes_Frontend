@@ -1,5 +1,5 @@
 import { TeamMember } from "@/types/index"
-import Button from '../Button';
+import Button from '../Icon';
 import { UserPlus } from "lucide-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addUserToProject } from "@/api/TeamAPI";

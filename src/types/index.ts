@@ -26,6 +26,7 @@ export const userSchema = authSchema.pick({
   _id: z.string()
 })
 export type User = z.infer<typeof userSchema>
+export type UserProfileForm = Pick<User, 'name' | 'email'>
 
 /* notes */
 const noteSchema = z.object({
@@ -72,6 +73,8 @@ export const projectSchema = z.object({
   description: z.string(),
   manager: z.string(userSchema.pick({ _id: true }))
 })
+
+/* aqui vamos a generar el breadcrumbs.. apartit de los types de Project & Task.. segun..!! */
 
 /* dashboard */
 export const dashboardProjectSchema = z.array(
