@@ -4,13 +4,17 @@ import { Menu, Transition } from "@headlessui/react"
 import { EllipsisVerticalIcon } from 'lucide-react'
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { deleteProject, getProjects } from "@/api/ProjectAPI"
-import { Link } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { useAuth } from "@/hooks/useAuth"
 import { toast } from 'react-toastify'
 import { isManager } from '../utils/policies';
+import DeleteProjectModal from '@/components/projects/DeleteProjectModal'
 
 
 export default function DashboardView() {
+
+  const location = useLocation()
+  const navigate = useNavigate()
   const { data: user, isLoading: authLoading } = useAuth() // esto para que no choquen las variables
   const { data, isLoading } = useQuery({
     queryKey: ['projects'],
@@ -29,8 +33,6 @@ export default function DashboardView() {
       queryClient.invalidateQueries({ queryKey: ['projects'] })
     }
   })
-
-
 
   /* console.log(data)
   console.log(user?._id) */
@@ -64,26 +66,6 @@ export default function DashboardView() {
                 </div>
               </div>
 
-              {/* created at/ last update */}
-              {/* <div className='flex items-center w-4/12'>
-                <p className="block font-sans text-base antialiased font-normal leading-relaxed text-inherit">
-                  {formatDate(project.createdAt)} - {formatDate(project.updatedAt)}
-                </p>
-              </div> */}
-
-              {/* colaboradores */}
-              {/* <div className="flex items-center justify-between w-3/12">
-                <div className="flex items-center -space-x-3">
-                  <img alt="natali craig"
-                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1061&amp;q=80"
-                    className="relative inline-block h-9 w-9 !rounded-full  border-2 border-white object-cover object-center hover:z-10" />
-                  <img alt="Tania Andrew"
-                    src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1480&amp;q=80"
-                    className="relative inline-block h-9 w-9 !rounded-full  border-2 border-white object-cover object-center hover:z-10" />
-                </div>
-              </div> */}
-
-
               {/* rigth side.. tools */}
               <div>
                 {isManager(project.manager, user._id) && (
@@ -111,7 +93,8 @@ export default function DashboardView() {
                             <button
                               type='button'
                               className='block px-3 py-1 text-sm leading-6 text-red-500'
-                              onClick={() => mutate(project._id)}
+                              /* onClick={() => mutate(project._id)}.. remplazamos esta linea por el siguiente codigo que revisa primero el passwor sea correcto y luego procedemos a eliminar */
+                              onClick={() => navigate(location.pathname + `?deleteProject=${project._id}`)}
                             >
                               Eliminar Proyecto
                             </button>
@@ -136,9 +119,10 @@ export default function DashboardView() {
               Crear Proyecto
             </Link>
           </p>
-
         </div>
       )}
+
+      <DeleteProjectModal />
     </>
   )
 }
