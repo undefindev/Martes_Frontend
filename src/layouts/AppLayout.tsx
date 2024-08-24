@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from "@/hooks/useAuth";
 import Navbar from "@/components/header/Navbar";
-import Trails from "@/components/Trails";
+import CategoryPills from "@/components/CategoryPills";
 
 export default function AppLayout() {
 
@@ -17,23 +17,34 @@ export default function AppLayout() {
 
   if (data) return (
     <>
-      <div className="max-h-screen flex flex-col">
-        {/* navbar */}
-        <Navbar />
-        {/* main Content */}
-        <main className="grid grid-cols-[auto_1fr] flex-grow-1 overflow-auto">
-          <aside>Sidebar</aside>
-          <div className="sticky top-0 bg-neutral-50 z-10 p-4 border rounded-xl mx-4 overflow-y-scroll">
-            <Trails />
-            <Outlet />
-          </div>
-        </main>
+      <div className="p-4 lg:p-0 lg:container mx-auto">
+        <header>
+          <Navbar />
+        </header>
 
-        <ToastContainer
-          pauseOnHover={false}
-          pauseOnFocusLoss={false}
-        />
+        <section>
+          <div className="sticky top-0 z-10 pb-4">
+            <CategoryPills />
+            <div>
+              <div >
+                <Outlet />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer className='text-sm text-gray-500 text-center font-light'>
+          <p>
+            Martes.org - by 'a la Huevona..'
+          </p>
+          <p>Todos los Derechos Reservados {new Date().getFullYear()}</p>
+        </footer>
       </div>
+
+      <ToastContainer
+        pauseOnHover={false}
+        pauseOnFocusLoss={false}
+      />
     </>
   )
 }

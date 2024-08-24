@@ -73,7 +73,9 @@ export const projectSchema = z.object({
   projectName: z.string(),
   clientName: z.string(),
   description: z.string(),
-  manager: z.string(userSchema.pick({ _id: true }))
+  manager: z.string(userSchema.pick({ _id: true })),
+  createdAt: z.string(),
+  updatedAt: z.string()
 })
 
 /* aqui vamos a generar el breadcrumbs.. apartit de los types de Project & Task.. segun..!! */
@@ -85,7 +87,9 @@ export const dashboardProjectSchema = z.array(
     projectName: true,
     clientName: true,
     description: true,
-    manager: true
+    manager: true,
+    createdAt: true,
+    updatedAt: true
   })
 )
 
