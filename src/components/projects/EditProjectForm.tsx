@@ -5,6 +5,7 @@ import { Project, ProjectFormData } from "@/types/index";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateProject } from "@/api/ProjectAPI";
 import { toast } from "react-toastify";
+import { LuArrowLeft } from "react-icons/lu";
 
 type EditProjectFormProps = {
   data: ProjectFormData
@@ -46,33 +47,38 @@ export default function EditProjectForm({ data, projectId }: EditProjectFormProp
   }
   return (
     <>
-      <div className="max-w-md mx-auto">
-        <h2 className="text-4xl">Editar Proyecto</h2>
-        <nav className="mt-4">
-          <Link
-            to='/'
-            className="px-8 py-2 border border-slate-900 rounded-lg font-semibold cursor-pointer transition-colors hover:bg-slate-900 hover:text-white" >
-            Volver a Proyectos
-          </Link>
-        </nav>
+      <div className="w-full max-w-md transform overflow-hidden border rounded-2xl shadow-2xl bg-white text-left align-middle transition-all p-12 mx-auto">
+
+        <div className="flex items-center justify-between gap-4 mb-8">
+          <h5 className="font-semibold text-2xl text-gray-500">Editar Proyecto</h5>
+          <nav className="border rounded-lg p-2 hover:border-cyan-400">
+            <Link
+              to='/'
+            >
+              <LuArrowLeft className="text-cyan-400 h-6 w-6" />
+            </Link>
+          </nav>
+        </div>
+
 
         <form
+          className=""
           onSubmit={handleSubmit(handleForm)}
-          className="mt-8 shadow-lg p-8 rounded-lg border"
           noValidate
         >
 
           <ProjectForm
-            register={register} // estas son las props
+            register={register}
             errors={errors}
-
           />
 
           <input
             type="submit"
-            value="Guardar Cambios"
-            className="w-full uppercase p-1 font-semibold cursor-pointer transition-colors border border-slate-900 rounded-lg hover:bg-slate-900 hover:text-white"
+            value='Guardar Cambios'
+            className="bg-cyan-400 hover:bg-cyan-500 w-full p-2 mt-4  text-white font-semibold text-xl cursor-pointer rounded-xl transition-colors"
           />
+
+
         </form>
       </div>
     </>

@@ -3,9 +3,13 @@ import { Dialog, Transition } from '@headlessui/react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import ErrorMessage from "../ErrorMessage";
+import { CheckPasswordForm } from '@/types/index';
+import { useMutation } from '@tanstack/react-query';
+import { checkPassword } from '@/api/AuthAPI';
+import { toast } from 'react-toastify';
 
 export default function DeleteProjectModal() {
-  const initialValues = {
+  const initialValues: CheckPasswordForm = {
     password: ''
   }
   const location = useLocation()
@@ -17,7 +21,16 @@ export default function DeleteProjectModal() {
 
   const { register, handleSubmit, formState: { errors } } = useForm({ defaultValues: initialValues })
 
-  const handleForm = async (formData) => { }
+  const checkPasswordMutation = useMutation({
+    mutationFn: checkPassword,
+    onError: (error) => toast.error(error.message)
+  })
+
+  const handleForm = async (formData: CheckPasswordForm) => {
+    await checkPasswordMutation.mutateAsync(formData) // esta mamada es por si falla la primer condicion se bloque y ya no se ejecute lo demas en este caso el 'console.log'
+
+    console.log('Despues de un adios..')
+  }
 
 
   return (
@@ -46,7 +59,7 @@ export default function DeleteProjectModal() {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white text-left align-middle transition-all p-16">
+              <Dialog.Panel className="w-full max-w-lg transform overflow-hidden rounded-2xl bg-white text-left align-middle transition-all p-12">
 
                 <Dialog.Title
                   as="h3"
@@ -54,14 +67,14 @@ export default function DeleteProjectModal() {
                 >Eliminar Proyecto </Dialog.Title>
 
                 <form
-                  className="mt-8 space-y-5"
+                  className="mt-8 space-y-6"
                   onSubmit={handleSubmit(handleForm)}
                   noValidate
                 >
 
                   <div className="flex flex-col gap-2">
                     <label
-                      className="font-normal text-xl"
+                      className="font-normal text-sm"
                       htmlFor="password"
                     >Password</label>
                     <input
