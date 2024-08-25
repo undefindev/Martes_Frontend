@@ -47,7 +47,7 @@ export default function EditProjectForm({ data, projectId }: EditProjectFormProp
   }
   return (
     <>
-      <div className="w-full max-w-md transform overflow-hidden border rounded-2xl shadow-2xl bg-white text-left align-middle transition-all p-12 mx-auto">
+      <div className="w-full max-w-96 transform overflow-hidden border rounded-2xl shadow-2xl bg-white text-left align-middle transition-all p-12 mx-auto">
 
         <div className="flex items-center justify-between gap-4 mb-8">
           <h5 className="font-semibold text-2xl text-gray-500">Editar Proyecto</h5>

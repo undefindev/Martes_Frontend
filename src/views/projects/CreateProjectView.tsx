@@ -32,9 +32,9 @@ export default function CreateProjectView() {
   const handleForm = (formData: ProjectFormData) => mutate(formData) // una sola linea en el arrowFunction no ocupa las llaves
   return (
     <>
-      <div className="relative p-4 md:flex flex-col justify-between w-96 overflow-hidden rounded-2xl bg-white bg-clip-border text-gray-700 border mx-auto items-center">
-        <div>
-          <h2 className="text-2xl font-semibold text-gray-600">Nuevo Proyecto</h2>
+      <div className="w-full max-w-md transform overflow-hidden border rounded-2xl shadow-2xl bg-white text-left align-middle transition-all p-8 mx-auto">
+        <div className="mb-8">
+          <h2 className="text-2xl font-semibold text-gray-500">Nuevo Proyecto</h2>
         </div>
 
         <form
@@ -53,7 +53,7 @@ export default function CreateProjectView() {
             <input
               type="submit"
               value="Crear Proyecto"
-              className="w-full p-2 rounded-md border cursor-pointer"
+              className="bg-cyan-400 hover:bg-cyan-500 w-full p-2 mt-4  text-white font-semibold text-xl cursor-pointer rounded-lg transition-colors"
             />
             <Link
               to='/'

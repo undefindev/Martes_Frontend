@@ -4,9 +4,11 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import ErrorMessage from "../ErrorMessage";
 import { CheckPasswordForm } from '@/types/index';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { checkPassword } from '@/api/AuthAPI';
 import { toast } from 'react-toastify';
+import { deleteProject } from '@/api/ProjectAPI';
+
 
 export default function DeleteProjectModal() {
   const initialValues: CheckPasswordForm = {
@@ -21,17 +23,31 @@ export default function DeleteProjectModal() {
 
   const { register, handleSubmit, formState: { errors } } = useForm({ defaultValues: initialValues })
 
+  const queryClient = useQueryClient()
   const checkPasswordMutation = useMutation({
     mutationFn: checkPassword,
     onError: (error) => toast.error(error.message)
   })
 
+  // la maldita mutacion
+  const deleteProjectMutation = useMutation({
+    mutationFn: deleteProject,
+    onError: (error) => {
+      toast.error(error.message)
+    },
+    onSuccess: (data) => {
+      toast.success(data)
+      queryClient.invalidateQueries({ queryKey: ['projects'] })
+      navigate(location.pathname, { replace: true }) // cerramos el modal
+    }
+  })
+
+
+  // esta mamada es cuando tienes dos mutaciones y una depende de la otra.. las colocas en una funcion y con mutateAsync se ejecuta el onError de la mutacion y manejar los errors y si todo sale bien.. una caguama
   const handleForm = async (formData: CheckPasswordForm) => {
-    await checkPasswordMutation.mutateAsync(formData) // esta mamada es por si falla la primer condicion se bloque y ya no se ejecute lo demas en este caso el 'console.log'
-
-    console.log('Despues de un adios..')
+    await checkPasswordMutation.mutateAsync(formData)
+    await deleteProjectMutation.mutateAsync(deleteProjectId)
   }
-
 
   return (
     <Transition appear show={show} as={Fragment}>
