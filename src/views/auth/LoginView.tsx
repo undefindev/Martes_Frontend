@@ -5,6 +5,7 @@ import { UserLoginForm } from "@/types/index";
 import ErrorMessage from "@/components/ErrorMessage";
 import { authenticateUser } from "@/api/AuthAPI";
 import { toast } from "react-toastify";
+import Footer from "@/components/footer/Footer";
 
 export default function LoginView() {
 
@@ -36,76 +37,101 @@ export default function LoginView() {
     <>
       <form
         onSubmit={handleSubmit(handleLogin)}
-        className="shadow-lg rounded-2xl md:max-w-96 px-12 pt-12 pb-6 mx-4 md:mx-0"
         noValidate
+        className="mb-1 p-4 md:p-0"
       >
-        <h3 className="text-2xl font-semibold text-neutral-500 mb-8">Login</h3>
-        <div className="divide-y divide-gray-100">
-          <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 pb-0">
-            <div className="relative">
-              <input
-                id="email"
-                type="email"
-                placeholder="doe@email.com"
-                className="bg-slate-100 peer placeholder-transparent h-10 w-full border-b-2 border-neutral-300 text-gray-900 focus:outline-none focus:border-indigo-400"
-                {...register("email", {
-                  required: "El Email es obligatorio",
-                  pattern: {
-                    value: /\S+@\S+\.\S+/,
-                    message: "E-mail no válido",
-                  },
-                })}
-              />
-              <label className="absolute left-0 -top-3.5 text-neutral-500 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-indigo-500 peer-focus:text-sm">email</label>
-              {errors.email && (
-                <ErrorMessage>{errors.email.message}</ErrorMessage>
-              )}
-            </div>
+        <div className="space-y-12">
+          <div className="border-b border-gray-300 pb-10">
+            <h2 className="text-base font-semibold leading-7 text-gray-900">Login</h2>
+            <p className="mt-1 text-sm leading-6 text-gray-600">
+              Hola.. Ingresa tus datos para el registro
+            </p>
 
-            <div className="relative">
-              <input
-                type="password"
-                placeholder="escribe tu contraseña"
-                className="bg-slate-100 peer placeholder-transparent h-10 w-full border-b-2 border-neutral-300 text-gray-900 focus:outline-none focus:border-indigo-400"
-                {...register("password", {
-                  required: "El Password es obligatorio",
-                })}
-              />
-              <label className="absolute left-0 -top-3.5 text-neutral-500 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-indigo-500 peer-focus:text-sm">contraseña</label>
-              {errors.password && (
-                <ErrorMessage>{errors.password.message}</ErrorMessage>
-              )}
+            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+              {/* email */}
+              <div className="col-span-full">
+                <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
+                  Email
+                </label>
+                <div className="mt-1">
+                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                    <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">workcation.com/</span>
+                    <input
+                      id="email"
+                      type="email"
+                      placeholder="jhonh@doe.com"
+                      className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                      {...register("email", {
+                        required: "El Email es obligatorio",
+                        pattern: {
+                          value: /\S+@\S+\.\S+/,
+                          message: "E-mail no válido",
+                        },
+                      })}
+                    />
+                    {errors.email && (
+                      <ErrorMessage>{errors.email.message}</ErrorMessage>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* password */}
+              <div className="col-span-full">
+                <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
+                  Password
+                </label>
+                <div className="mt-1">
+                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                    <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm"></span>
+                    <input
+                      type="password"
+                      placeholder="ingresa tu password"
+                      className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                      {...register("password", {
+                        required: "El Password es obligatorio",
+                      })}
+                    />
+                    {errors.password && (
+                      <ErrorMessage>{errors.password.message}</ErrorMessage>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
+            <input
+              type="submit"
+              value='Iniciar Sesión'
+              className="w-full py-1.5 pl-1 mt-12 rounded-lg text-white font-semibold text-xl cursor-pointer bg-cyan-400 hover:bg-cyan-500 hover:text-white"
+            />
+
+            <nav className="mt-6 flex flex-col text-center">
+              <p className="text-sm text-gray-500">eres nuevo?..{' '}
+                <span>
+                  <Link
+                    to={'/auth/register'}
+                    className="text-centet text-gray-700"
+                  >
+                    registrate..!!
+                  </Link>
+                </span>
+              </p>
+
+              <p className="text-sm text-gray-500 mt-1">soy pendejo..{' '}
+                <span>
+                  <Link to={'/auth/forgot-password'} className="text-centet text-gray-700">
+                    olvide la contraseña
+                  </Link>
+                </span>
+              </p>
+            </nav>
           </div>
         </div>
-
-        {/* olvide password */}
-        <div className="text-end text-sm text-indigo-400 hover:text-purple-500 mt-2">
-          <Link to={'/auth/forgot-password'}>
-            olvide contraseña
-          </Link>
-        </div>
-
-        <input
-          type="submit"
-          value='Iniciar Sesión'
-          className="w-full p-2 mt-12 rounded-xl text-white font-semibold text-xl cursor-pointer bg-gradient-to-r from-cyan-400 via-indigo-500 to-purple-400"
-        />
-
-        <nav className="mt-8 flex flex-col space-y-4 text-center">
-          <p className="text-sm">eres nuevo?..{' '}
-            <span>
-              <Link
-                to={'/auth/register'}
-                className="text-centet text-fuchsia-500 font-semibold text-lg"
-              >
-                registrate..!!
-              </Link>
-            </span>
-          </p>
-        </nav>
-        <p className="text-xs text-center text-gray-400">alimentate sanamete, come frutas y verduras</p>
       </form>
+
+      <Footer />
+
+
     </>
   )
 }
