@@ -5,6 +5,7 @@ import { UserRegistrationForm } from "@/types/index";
 import ErrorMessage from "@/components/ErrorMessage";
 import { createAccount } from "@/api/AuthAPI";
 import { toast } from "react-toastify";
+import Footer from "@/components/footer/Footer";
 
 export default function RegisterView() {
 
@@ -37,129 +38,136 @@ export default function RegisterView() {
 
   return (
     <>
-      <form
-        onSubmit={handleSubmit(handleRegister)}
-        className="shadow-lg rounded-2xl md:max-w-96 p-12 mx-4 md:mx-0"
-        noValidate
-      >
-        <h3 className="text-2xl font-semibold text-neutral-500 mb-8">Crear Cuenta</h3>
-        <div className="divide-y divide-indigo-400">
-          <div className="py-8 text-base leading-6 space-y-4 text-neutral-700 sm:text-lg sm:leading-7 pb-0">
-            <div className="relative">
-              <input
-                id="email"
-                type="email"
-                placeholder="doe@email.com"
-                className="bg-slate-100 peer placeholder-transparent h-10 w-full border-b-2 border-neutral-300 text-gray-900 focus:outline-none focus:border-indigo-400"
-                {...register("email", {
-                  required: "El Email de registro es obligatorio",
-                  pattern: {
-                    value: /\S+@\S+\.\S+/,
-                    message: "E-mail no válido",
-                  },
-                })}
-              />
-              <label className="absolute left-0 -top-3.5 text-neutral-500 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-indigo-500 peer-focus:text-sm">email</label>
-              {errors.email && (
-                <ErrorMessage>{errors.email.message}</ErrorMessage>
-              )}
+      <div className="flex min-h-full flex-1 flex-col justify-center px-4 lg:px-8">
+
+        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          {/* header */}
+          <div className="border-b border-gray-300 pb-8" >
+            <div>
+              <h2 className="mt-10 text-2xl font-semibold leading-9 tracking-tight text-gray-700">Crear Cuenta</h2>
+              <p className="mt-1 leading-6 font-light text-gray-500">
+                Gusto en conocerte.. ingresa tus datos para registrarte
+              </p>
             </div>
-
-            <div className="relative">
-              {/*  <label
-            className="text-sm"
-          >Nombre</label> */}
-              <input
-                type="name"
-                placeholder="nombre de Usuario"
-                className="bg-slate-100 peer placeholder-transparent h-10 w-full border-b-2 border-neutral-300 text-gray-900 focus:outline-none focus:border-indigo-400"
-                {...register("name", {
-                  required: "El Nombre de usuario es obligatorio",
-                })}
-              />
-              <label className="absolute left-0 -top-3.5 text-neutral-500 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-indigo-500 peer-focus:text-sm">Nombre de Usuario</label>
-              {errors.name && (
-                <ErrorMessage>{errors.name.message}</ErrorMessage>
-              )}
-            </div>
-
-            <div className="relative">
-              {/* <label
-            className="text-sm"
-          >Password</label> */}
-
-              <input
-                type="password"
-                placeholder="crea una contraseña"
-                className="bg-slate-100 peer placeholder-transparent h-10 w-full border-b-2 border-neutral-300 text-gray-900 focus:outline-none focus:border-indigo-400"
-                {...register("password", {
-                  required: "El Password es obligatorio",
-                  minLength: {
-                    value: 8,
-                    message: 'El Password debe ser mínimo de 8 caracteres'
-                  }
-                })}
-              />
-              <label className="absolute left-0 -top-3.5 text-neutral-500 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-indigo-500 peer-focus:text-sm">Contraseña</label>
-              {errors.password && (
-                <ErrorMessage>{errors.password.message}</ErrorMessage>
-              )}
-            </div>
-
-            <div className="relative">
-              {/* <label
-            className="text-sm"
-          >Repetir Password</label> */}
-
-              <input
-                id="password_confirmation"
-                type="password"
-                placeholder="repite tu contraseña"
-                className="bg-slate-100 peer placeholder-transparent h-10 w-full border-b-2 border-neutral-300 text-gray-900 focus:outline-none focus:border-indigo-400"
-                {...register("password_confirmation", {
-                  required: "Repetir Password es obligatorio",
-                  validate: value => value === password || 'Los Passwords no son iguales'
-                })}
-              />
-              <label className="absolute left-0 -top-3.5 text-neutral-500 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-indigo-500 peer-focus:text-sm">repite tu contraseña</label>
-
-              {errors.password_confirmation && (
-                <ErrorMessage>{errors.password_confirmation.message}</ErrorMessage>
-              )}
-            </div>
-          </div>
-        </div>
-
-
-
-        <div className="text-end">
-          <Link
-            to={'/auth/forgot-password'}
-            className="text-sm text-indigo-400 hover:text-purple-500 mt-2"
-          >
-            olvide contraseña
-          </Link>
-        </div>
-
-        <input
-          type="submit"
-          value='Registrarme'
-          className="w-full p-2 mt-12 rounded-full text-white font-semibold text-xl cursor-pointer bg-gradient-to-r from-cyan-400 via-indigo-500 to-purple-400"
-        />
-
-        <nav className="mt-8 flex flex-col space-y-4 text-center">
-          <p className="text-sm">Ya tienes Cuenta?..{' '}
-            <span>
-              <Link
-                to={'/auth/login'}
-                className="text-centet text-fuchsia-500 font-semibold text-lg"
+            {/* body */}
+            <div className="mt-10">
+              <form
+                onSubmit={handleSubmit(handleRegister)}
+                className="space-y-4"
+                noValidate
               >
-                Iniciar Sesion..!!
-              </Link>
-            </span>
-          </p>
-        </nav>
-      </form>
+                {/* email */}
+                <div>
+                  <label className="pl-2 block text-sm font-medium leading-6 text-gray-900">email</label>
+                  <div className="mt-2">
+                    <input
+                      id="email"
+                      type="email"
+                      placeholder="doe@email.com"
+                      className="block w-full rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-0 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                      {...register("email", {
+                        required: "El Email de registro es obligatorio",
+                        pattern: {
+                          value: /\S+@\S+\.\S+/,
+                          message: "E-mail no válido",
+                        },
+                      })}
+                    />
+                    {errors.email && (
+                      <ErrorMessage>{errors.email.message}</ErrorMessage>
+                    )}
+                  </div>
+                </div>
+                {/* nombre */}
+                <div>
+                  <label className="pl-2 block text-sm font-medium leading-6 text-gray-900">Nombre de Usuario</label>
+                  <div className="mt-2">
+                    <input
+                      type="name"
+                      placeholder="nombre de Usuario"
+                      className="block w-full rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-0 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                      {...register("name", {
+                        required: "El Nombre de usuario es obligatorio",
+                      })}
+                    />
+                    {errors.name && (
+                      <ErrorMessage>{errors.name.message}</ErrorMessage>
+                    )}
+                  </div>
+                </div>
+                {/* password */}
+                <div>
+                  <label className="pl-2 block text-sm font-medium leading-6 text-gray-900">Contraseña</label>
+                  <div className="mt-2">
+                    <input
+                      type="password"
+                      placeholder="crea una contraseña"
+                      className="block w-full rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-0 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                      {...register("password", {
+                        required: "El Password es obligatorio",
+                        minLength: {
+                          value: 8,
+                          message: 'El Password debe ser mínimo de 8 caracteres'
+                        }
+                      })}
+                    />
+                    {errors.password && (
+                      <ErrorMessage>{errors.password.message}</ErrorMessage>
+                    )}
+                  </div>
+                </div>
+                {/* repetir password */}
+                <div>
+                  <label className="pl-2 block text-sm font-medium leading-6 text-gray-900">repite contraseña</label>
+                  <div className="mt-2">
+                    <input
+                      id="password_confirmation"
+                      type="password"
+                      placeholder="repite tu contraseña"
+                      className="block w-full rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-0 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                      {...register("password_confirmation", {
+                        required: "Repetir Password es obligatorio",
+                        validate: value => value === password || 'Los Passwords no son iguales'
+                      })}
+                    />
+                    {errors.password_confirmation && (
+                      <ErrorMessage>{errors.password_confirmation.message}</ErrorMessage>
+                    )}
+                  </div>
+                </div>
+              </form >
+            </div>
+            {/* button */}
+            <input
+              type="submit"
+              value='Registrarme'
+              className="w-full py-1.5 mt-4 rounded-lg text-white font-semibold text-xl cursor-pointer bg-cyan-400 hover:bg-indigo-400 hover:text-white"
+            />
+            {/* mamadas */}
+            <nav className="mt-6 flex flex-col gap-1 text-center">
+              <p className="mt-10 text-center text-sm text-gray-500">
+                Ya tienes cuenta?{' '}
+                <Link
+                  to={'/auth/login'}
+                  className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                  Iniciar Sesion
+                </Link>
+              </p>
+            </nav>
+          </div>
+
+          <Footer />
+        </div>
+
+
+      </div>
     </>
   )
 }
+
+
+
+
+
+
+
