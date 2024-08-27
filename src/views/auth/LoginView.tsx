@@ -36,7 +36,10 @@ export default function LoginView() {
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+
+        {/* el borde de abajo */}
         <div className="border-b border-gray-300 pb-2 mb-2">
+          {/* header */}
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <h2 className="mt-10 text-2xl font-semibold leading-9 tracking-tight text-gray-700">
               Login
@@ -50,11 +53,12 @@ export default function LoginView() {
             <form
               onSubmit={handleSubmit(handleLogin)}
               noValidate
+              className="space-y-6"
             >
               {/* email */}
-              <div className="mt-4">
-                <label htmlFor="email" className="pl-1.5 block text-sm font-medium leading-6 text-gray-900">
-                  Email
+              <div>
+                <label htmlFor="email" className="pl-1.5 block text-sm font-medium leading-6 text-gray-700">
+                  email
                 </label>
                 <div className="mt-1">
                   <input
@@ -77,17 +81,15 @@ export default function LoginView() {
               </div>
 
               {/* password */}
-              <div className="mt-4">
-                <div className="flex items-center justify-between">
-                  <label htmlFor="password" className="pl-1.5 block text-sm font-medium leading-6 text-gray-900">
-                    Password
-                  </label>
-                </div>
+              <div>
+                <label htmlFor="password" className="pl-1.5 block text-sm font-medium leading-6 text-gray-900">
+                  Password
+                </label>
                 <div className="mt-1">
                   <input
                     id="password"
                     type="password"
-                    placeholder="ingresa el maldito password"
+                    placeholder="ingresa tu maldito password"
                     className="block w-full rounded-md border-0 py-1.5 pl-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     {...register("password", {
                       required: "El Password es obligatorio",
@@ -107,7 +109,7 @@ export default function LoginView() {
               </div>
 
               {/* el button */}
-              <div className="mt-12">
+              <div>
                 <input
                   type="submit"
                   value='Iniciar Sesión'
@@ -124,7 +126,6 @@ export default function LoginView() {
             </p>
           </div>
         </div>
-
         <Footer />
       </div>
     </>
