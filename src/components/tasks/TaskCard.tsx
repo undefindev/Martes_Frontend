@@ -6,7 +6,7 @@ import { Task } from "@/types/index"
 import { deleteTask } from '@/api/TaskAPI'
 import { toast } from 'react-toastify'
 import { EllipsisVerticalIcon } from 'lucide-react'
-import { useDraggable } from '@dnd-kit/core'
+import { useDraggable } from '@dnd-kit/core' // y este es el dragonball
 
 type TaskCardProps = {
   task: Task
