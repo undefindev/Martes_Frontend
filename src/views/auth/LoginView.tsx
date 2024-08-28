@@ -39,16 +39,18 @@ export default function LoginView() {
 
         {/* el borde de abajo */}
         <div className="border-b border-gray-300 pb-2 mb-2">
+
           {/* header */}
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <h2 className="mt-10 text-2xl font-semibold leading-9 tracking-tight text-gray-700">
               Login
             </h2>
             <p className="mt-1 leading-6 font-light text-gray-500">
-              Hola, identificate..!
+              Hola, Identificate..!!
             </p>
           </div>
 
+          {/* body */}
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form
               onSubmit={handleSubmit(handleLogin)}

@@ -29,8 +29,10 @@ export default function TaskModalDetails() {
     retry: false
   })
 
-  // este es el codigo de la mutacion
+
   const queryClient = useQueryClient()
+
+  // este es el codigo de la mutacion
   const { mutate } = useMutation({
     mutationFn: updateStatus,
     onError: (error) => {
@@ -41,7 +43,6 @@ export default function TaskModalDetails() {
       queryClient.invalidateQueries({ queryKey: ['editProject', projectId] }) /* este para que se reflejen los cambio de las tareas y se reordenen */
       queryClient.invalidateQueries({ queryKey: ['task', taskId] }) /*  y este para que tenga la informacion fresca despues de hacer el cambio y se muestre en el modal correctamente */
       /* reset() */ // este verga no va aqui.. pero ahi lo vamos a dejar por si las moscas
-      navigate(location.pathname, { replace: true }) // para ocultar el modal
     }
   })
 
@@ -49,7 +50,6 @@ export default function TaskModalDetails() {
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     /* console.log(e.target.value) */
     const status = e.target.value as TaskStatus
-
     const data = { projectId, taskId, status }
     /* console.log(data) */
     mutate(data)
