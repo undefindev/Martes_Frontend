@@ -40,18 +40,16 @@ export default function TaskCard({ task, canEdit }: TaskCardProps) {
   } : undefined
 
   return (
-    <li className="p-4 bg-white border border-cyan-400 rounded-xl flex justify-between gap-2">
+    <li className="p-4 bg-white rounded-lg border flex justify-between gap-2">
       <div
         {...listeners}
         {...attributes}
         ref={setNodeRef}
         style={style}
         className=" min-w-0 flex flex-col gap-y-4">
-        <button
-          type='button'
-          onClick={() => navigate(location.pathname + `?viewTask=${task._id}`)}
-          className="text-xl font-bold text-slate-600 text-left">{task.name}
-        </button>
+        <p className="text-xl font-bold text-slate-600 text-left">
+          {task.name}
+        </p>
         <p className="text-slate-500">{task.description}</p>
       </div>
 

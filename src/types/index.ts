@@ -79,6 +79,8 @@ export const projectSchema = z.object({
   updatedAt: z.string()
 })
 
+
+
 /* aqui vamos a generar el breadcrumbs.. apartit de los types de Project & Task.. segun..!! */
 
 /* dashboard */
@@ -93,6 +95,12 @@ export const dashboardProjectSchema = z.array(
     updatedAt: true
   })
 )
+
+export const editProjectSchema = projectSchema.pick({
+  projectName: true,
+  clientName: true,
+  description: true
+})
 
 /* esto es para no generar diferentes schema */
 export type Project = z.infer<typeof projectSchema>
