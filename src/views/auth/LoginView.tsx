@@ -45,7 +45,7 @@ export default function LoginView() {
             <h2 className="mt-10 text-2xl font-semibold leading-9 tracking-tight text-gray-700">
               Login
             </h2>
-            <p className="mt-1 leading-6 font-light text-gray-500">
+            <p className="mt-1 leading-6 text-gray-500">
               Hola, Identificate..!!
             </p>
           </div>
@@ -60,7 +60,7 @@ export default function LoginView() {
               {/* email */}
               <div>
                 <label htmlFor="email" className="pl-1.5 block text-sm font-medium leading-6 text-gray-700">
-                  email
+                  Email
                 </label>
                 <div className="mt-1">
                   <input

@@ -4,7 +4,6 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from "@/hooks/useAuth";
 import Navbar from "@/components/header/Navbar";
-import CategoryPills from "@/components/CategoryPills";
 
 export default function AppLayout() {
 
@@ -17,28 +16,25 @@ export default function AppLayout() {
 
   if (data) return (
     <>
-      <div className="p-4 lg:p-0 lg:container mx-auto">
-        <header>
+      <div className="min-h-full">
+        <div className="mx-auto container px-4 sm:px-6 lg:px-6">
           <Navbar />
-        </header>
 
-        <section>
-          <div className="sticky top-0 z-10 pb-4">
-            <CategoryPills />
-            <div>
-              <div >
-                <Outlet />
-              </div>
+          {/* mian */}
+          <main>
+            <div className="mx-auto container px-4 py-6 sm:px-6 lg:px-8">
+              <Outlet />
             </div>
-          </div>
-        </section>
+          </main>
 
-        <footer className='text-sm text-gray-500 text-center font-light'>
-          <p>
-            Martes.org - by 'a la Huevona..'
-          </p>
-          <p>Todos los Derechos Reservados {new Date().getFullYear()}</p>
-        </footer>
+          {/* footer */}
+          <footer className='text-sm text-gray-500 text-center font-light'>
+            <p>
+              Martes.org - by 'a la Huevona..'
+            </p>
+            <p>Todos los Derechos Reservados {new Date().getFullYear()}</p>
+          </footer>
+        </div>
       </div>
 
       <ToastContainer

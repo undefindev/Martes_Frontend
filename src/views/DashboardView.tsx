@@ -1,6 +1,6 @@
 
 import { Fragment } from 'react'
-import { Menu, Transition } from "@headlessui/react"
+import { Menu, Transition, MenuButton } from "@headlessui/react"
 import { EllipsisVerticalIcon } from 'lucide-react'
 import { useQuery } from "@tanstack/react-query"
 import { getProjects } from "@/api/ProjectAPI"
@@ -57,10 +57,10 @@ export default function DashboardView() {
                 {isManager(project.manager, user._id) && (
                   <>
                     <Menu as="div" className="relative flex-none z-20">
-                      <Menu.Button className="block text-gray-500 hover:text-gray-900">
+                      <MenuButton className="block text-gray-500 hover:text-gray-900">
                         <span className="sr-only">opciones</span>
                         <EllipsisVerticalIcon className="h-8 w-8" aria-hidden="true" />
-                      </Menu.Button>
+                      </MenuButton>
                       <Transition as={Fragment} enter="transition ease-out duration-100"
                         enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100"
                         leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100"

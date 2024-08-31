@@ -7,6 +7,7 @@ import { UserCircle2 } from 'lucide-react';
 
 type NavMenueProps = {
   name: User['name']
+  email: User['email']
 }
 
 export default function NavMenu({ name }: NavMenueProps) {

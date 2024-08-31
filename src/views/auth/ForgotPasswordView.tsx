@@ -36,7 +36,7 @@ export default function ForgotPasswordView() {
           {/* header */}
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <h2 className="mt-10 text-2xl font-semibold leading-9 tracking-tight text-gray-700">Reestablecer Password</h2>
-            <p className="pl-2 leading-6 font-light text-gray-500">
+            <p className="leading-6 font-light text-gray-500">
               Todo bien, tu tranquilo y yo nervioso..!!
             </p>
           </div>
