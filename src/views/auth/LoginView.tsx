@@ -35,7 +35,7 @@ export default function LoginView() {
 
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex flex-1 flex-col justify-center px-6 py-12 lg:px-8">
 
         {/* el borde de abajo */}
         <div className="border-b border-gray-300 pb-2 mb-2">
@@ -103,7 +103,7 @@ export default function LoginView() {
                   <div className="text-sm text-end mt-1">
                     <Link
                       to={'/auth/forgot-password'}
-                      className="pr-1.5 text-indigo-500 hover:text-indigo-400">
+                      className="pr-1.5 text-indigo-500 hover:text-indigo-600">
                       soy Pendejo..!!
                     </Link>
                   </div>

@@ -2,9 +2,12 @@
 export default function Footer() {
   return (
     <>
-      <p className="text-center text-sm font-light text-gray-500">
-        Martes.org&copy; - by a la huevona..!!&copy; Todos los derechos reservados {new Date().getFullYear()}
-      </p>
+      <footer className='text-sm text-gray-500 text-center font-light'>
+        <p>
+          Martes.org - by 'a la Huevona..'
+        </p>
+        <p>Todos los Derechos Reservados {new Date().getFullYear()}</p>
+      </footer>
     </>
   )
 }

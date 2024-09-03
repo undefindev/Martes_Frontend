@@ -1,5 +1,4 @@
 import { TeamMember } from "@/types/index"
-import Button from '../Icon';
 import { UserPlus } from "lucide-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addUserToProject } from "@/api/TeamAPI";
@@ -50,9 +49,9 @@ export default function SearchResult({ user, reset }: SearchResultProps) {
       <p className="mt-8 text-center font-semibold">Resultados</p>
       <div className="flex items-center justify-between">
         <p>{user.name}</p>
-        <Button size='icon' variant='ghost' onClick={handleAddUserToProject}>
+        <button onClick={handleAddUserToProject}>
           <UserPlus />
-        </Button>
+        </button>
       </div>
     </>
   )

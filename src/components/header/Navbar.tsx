@@ -1,15 +1,9 @@
 import { useAuth } from "@/hooks/useAuth";
 import { Disclosure, Menu, MenuButton } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { BellIcon } from '@heroicons/react/24/outline'
 import NavMenu from "../NavMenu";
 import Logo from "../Logo";
 import { UserCircle } from "lucide-react";
-
-const userNavigation = [
-  { name: 'Quien soy', href: '#' },
-  { name: 'Mis Proyectos', href: '#' },
-  { name: 'Cerrar Sesion', href: '#' },
-]
 
 export default function Navbar() {
 

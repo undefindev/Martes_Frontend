@@ -1,42 +1,40 @@
-// esta es la vista principal despues de login..
-import { Navigate, Outlet } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
-import { useAuth } from "@/hooks/useAuth";
-import Navbar from "@/components/header/Navbar";
+import { Disclosure } from '@headlessui/react'
+import { Link, Outlet, Navigate } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import Logo from '@/components/Logo'
+import NavMenu from '@/components/NavMenu'
+import { useAuth } from '@/hooks/useAuth'
+import Footer from '@/components/footer/Footer'
 
 export default function AppLayout() {
 
   const { data, isError, isLoading } = useAuth()
-
-  if (isLoading) return 'Cargando..'
+  if (isLoading) return 'Cargando...'
   if (isError) {
     return <Navigate to='/auth/login' />
   }
 
   if (data) return (
     <>
-      <div className="min-h-full">
-        <div className="mx-auto container px-4 sm:px-6 lg:px-6">
-          <Navbar />
-
-          {/* mian */}
-          <main>
-            <div className="mx-auto container px-4 py-6 sm:px-6 lg:px-8">
-              <Outlet />
+      <div className='min-h-full'>
+        <Disclosure as='nav'>
+          <div className='mx-auto container px-4 md:px-0'>
+            <div className='flex h-16 items-center justify-between'>
+              <Link to={'/'}>
+                <Logo />
+              </Link>
+              <NavMenu name={data.name} />
             </div>
-          </main>
+          </div >
+        </Disclosure >
 
-          {/* footer */}
-          <footer className='text-sm text-gray-500 text-center font-light'>
-            <p>
-              Martes.org - by 'a la Huevona..'
-            </p>
-            <p>Todos los Derechos Reservados {new Date().getFullYear()}</p>
-          </footer>
-        </div>
-      </div>
+        <main className='mx-auto container px-4 py-6 md:px-0'>
+          <Outlet />
+        </main>
 
+        <Footer />
+      </div >
       <ToastContainer
         pauseOnHover={false}
         pauseOnFocusLoss={false}

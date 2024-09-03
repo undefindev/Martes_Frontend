@@ -65,8 +65,17 @@ export const taskSchema = z.object({
   updatedAt: z.string()
 })
 
+// schema intermedio para el dashboard
+export const taskProjectSchema = taskSchema.pick({
+  _id: true,
+  name: true,
+  description: true,
+  status: true
+})
+
 export type Task = z.infer<typeof taskSchema>
 export type TaskFormData = Pick<Task, 'name' | 'description'>
+export type TaskProject = z.infer<typeof taskProjectSchema>
 
 /* project */
 export const projectSchema = z.object({
@@ -75,13 +84,10 @@ export const projectSchema = z.object({
   clientName: z.string(),
   description: z.string(),
   manager: z.string(userSchema.pick({ _id: true })),
-  createdAt: z.string(),
-  updatedAt: z.string()
+  tasks: z.array(taskProjectSchema),
+  team: z.array(z.string(userSchema.pick({ _id: true })))
 })
 
-
-
-/* aqui vamos a generar el breadcrumbs.. apartit de los types de Project & Task.. segun..!! */
 
 /* dashboard */
 export const dashboardProjectSchema = z.array(
@@ -91,8 +97,6 @@ export const dashboardProjectSchema = z.array(
     clientName: true,
     description: true,
     manager: true,
-    createdAt: true,
-    updatedAt: true
   })
 )
 

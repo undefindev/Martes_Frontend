@@ -2,14 +2,14 @@ import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { Task } from "@/types/index"
+import { TaskProject } from "@/types/index"
 import { deleteTask } from '@/api/TaskAPI'
 import { toast } from 'react-toastify'
 import { EllipsisVerticalIcon } from 'lucide-react'
 import { useDraggable } from '@dnd-kit/core' // y este es el dragonball
 
 type TaskCardProps = {
-  task: Task
+  task: TaskProject
   canEdit: boolean
 }
 
