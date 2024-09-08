@@ -5,9 +5,9 @@ export default function AuthLayout() {
   return (
 
     <>
-      <div className="min-h-screen">
-        <div className="py-8 lg:py-16 mx-auto w-[450px]">
-          <div className="mt-8">
+      <div className="min-h-screen flex items-center justify-center">
+        <div>
+          <div>
             <Outlet />
           </div>
         </div>

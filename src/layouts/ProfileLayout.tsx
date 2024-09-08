@@ -5,8 +5,12 @@ import { Outlet } from "react-router-dom";
 export default function ProfileLayout() {
   return (
     <>
-      <Tabs />
-      <Outlet />
+      <div>
+        <div><Tabs /></div>
+        <div><Outlet /></div>
+      </div>
+
+
     </>
   )
 }

@@ -21,13 +21,13 @@ export default function DashboardView() {
   if (isLoading && authLoading) return 'Cargando...'
   if (data && user) return (
     <>
-      <div>
+      <div className='mx-auto container px-4 sm:px-6 lg:px-0'>
         {/* top */}
         <div className='flex items-center justify-around'>
           <h2 className="text-2xl font-semibold leading-6 tracking-tight text-gray-700">Mis Proyectos</h2>
           <nav>
             <Link
-              className="rounded-md px-3 py-1.5 shadow-sm text-white text-sm font-semibold bg-cyan-400 hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600  cursor-pointer transition-colors"
+              className="rounded-md px-4 py-2 shadow-sm text-white text-sm font-semibold bg-cyan-400 hover:bg-purple-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600  cursor-pointer transition-colors"
               to='/projects/create'
             >Nuevo Proyecto</Link>
           </nav>
@@ -36,26 +36,30 @@ export default function DashboardView() {
         {/* body */}
         <div>
           {data.length ? (
-            <ul role="list" className="divide-y divide-gray-100">
+            <ul role="list">
               {data.map((project) => (
-                <li key={project._id} className="flex justify-between gap-x-6 px-5 py-10">
-                  <div className="flex min-w-0 gap-x-4">
-                    <div className="min-w-0 flex-auto space-y-2">
-                      <div className='mb-2'>
+                <li key={project._id} className="flex justify-between hover:bg-neutral-100 hover:rounded-2xl my-4">
+                  <div className="flex min-w-0 gap-x-1 p-4">
+                    <div className="min-w-0 flex-auto">
+                      <div className='pl-2'>
                         {isManager(project.manager, user._id) ?
                           <p className='font-semibold text-xs text-indigo-500'>Manager</p> :
-                          <p className='font-semibold text-xs text-teal-500'>Colaborador</p>
+                          <p className='font-semibold text-xs text-cyan-500'>Colaborador</p>
                         }
                       </div>
-                      <Link to={`/projects/${project._id}`}
-                        className="text-gray-600 cursor-pointer hover:underline text-3xl font-bold"
-                      >{project.projectName}</Link>
-                      <p className="text-sm text-gray-400">
-                        Cliente: {project.clientName}
-                      </p>
-                      <p className="text-sm text-gray-400">
-                        {project.description}
-                      </p>
+                      <div>
+                        <Link to={`/projects/${project._id}`}
+                          className="mb-1 text-xl font-semibold text-slate-800"
+                        >
+                          {project.projectName}
+                        </Link>
+                        <p className="text-sm text-slate-500">
+                          Cliente: {project.clientName}
+                        </p>
+                        <p className="text-base text-slate-600 leading-normal">
+                          {project.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
                   <div className="flex shrink-0 items-center gap-x-6">
@@ -69,7 +73,7 @@ export default function DashboardView() {
                         leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95">
                         <MenuItems
-                          className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
+                          className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-700/5 focus:outline-none"
                         >
                           <MenuItem>
                             <Link to={`/projects/${project._id}`}

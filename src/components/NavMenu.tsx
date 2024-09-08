@@ -3,7 +3,7 @@ import { Popover, Transition } from '@headlessui/react'
 import { Link } from 'react-router-dom'
 import { User } from '../types'
 import { useQueryClient } from '@tanstack/react-query'
-import { UserCircle2 } from 'lucide-react';
+import { UserCircleIcon } from '@heroicons/react/24/outline'
 
 type NavMenueProps = {
   name: User['name']
@@ -21,7 +21,14 @@ export default function NavMenu({ name }: NavMenueProps) {
   return (
     <Popover className="relative">
       <Popover.Button className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 p-1">
-        <UserCircle2 />
+        <button
+          type="button"
+          className="relative rounded-full text-gray-400 hover:text-purple-600"
+        >
+          <span className="absolute -inset-1.5" />
+          <span className="sr-only">Open user menu</span>
+          <UserCircleIcon aria-hidden="true" className="h-8 w-8" />
+        </button>
       </Popover.Button>
 
       <Transition
@@ -33,7 +40,7 @@ export default function NavMenu({ name }: NavMenueProps) {
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 translate-y-1"
       >
-        <Popover.Panel className="absolute bg-slate-50 left-1/2 z-20 mt-5 flex w-screen lg:max-w-min -translate-x-1/2 lg:-translate-x-48">
+        <Popover.Panel className="absolute bg-white left-1/2 z-20 mt-5 flex w-screen lg:max-w-min -translate-x-1/2 lg:-translate-x-48">
           <div className="w-full lg:w-56 shrink rounded-xl p-4 text-sm font-semibold leading-6 shadow-lg ring-1">
             <p className='text-center'>Hola: {name}</p>
             <Link

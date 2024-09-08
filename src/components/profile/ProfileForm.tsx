@@ -30,12 +30,12 @@ export default function ProfileForm({ data }: ProfileFormProps) {
 
   return (
     <>
-      <div className="flex flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex flex-1 flex-col justify-center">
 
         <div>
 
           {/* top */}
-          <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <div className="sm:mx-auto sm:w-full sm:max-w-sm text-center">
             <h4 className="mt-4 text-2xl font-semibold leading-9 tracking-tight text-gray-700">
               Mi Perfil
             </h4>
@@ -60,7 +60,7 @@ export default function ProfileForm({ data }: ProfileFormProps) {
                   id="name"
                   type="text"
                   placeholder="Tu Nombre"
-                  className="block w-full rounded-md border-0 py-1.5 pl-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-lg border-0 py-1.5 pl-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-0 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   {...register("name", {
                     required: "Nombre de usuario es obligatoro",
                   })}
@@ -79,7 +79,7 @@ export default function ProfileForm({ data }: ProfileFormProps) {
                   id="text"
                   type="email"
                   placeholder="Tu Email"
-                  className="block w-full rounded-md border-0 py-1.5 pl-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-lg border-0 py-1.5 pl-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-0 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   {...register("email", {
                     required: "EL e-mail es obligatorio",
                     pattern: {
@@ -96,7 +96,7 @@ export default function ProfileForm({ data }: ProfileFormProps) {
                 <input
                   type="submit"
                   value='Guardar Cambios'
-                  className="flex w-full justify-center rounded-md bg-fuchsia-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="flex w-full justify-center rounded-md bg-cyan-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 />
               </div>
             </form>

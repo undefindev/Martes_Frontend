@@ -30,11 +30,11 @@ export default function ForgotPasswordView() {
 
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex min-h-full flex-1 flex-col justify-center w-96">
 
-        <div className="border-b border-gray-300 pb-2 mb-2">
+        <div className="border-b border-gray-300 pb-4 mb-4">
           {/* header */}
-          <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <div className="sm:mx-auto sm:w-full sm:max-w-sm text-center">
             <h2 className="mt-10 text-2xl font-semibold leading-9 tracking-tight text-gray-700">Reestablecer Password</h2>
             <p className="leading-6 font-light text-gray-500">
               Todo bien, tu tranquilo y yo nervioso..!!
@@ -58,7 +58,7 @@ export default function ForgotPasswordView() {
                     id="email"
                     type="email"
                     placeholder="email de Registro"
-                    className="pl-1.5 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-lg border-0 py-1.5 pl-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-0 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     {...register("email", {
                       required: "El Email de registro es obligatorio",
                       pattern: {

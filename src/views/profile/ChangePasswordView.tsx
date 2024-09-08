@@ -27,84 +27,94 @@ export default function ChangePasswordView() {
 
   return (
     <>
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto flex flex-1 flex-col justify-center">
 
-        <h1 className="text-5xl font-black ">Cambiar Password</h1>
-        <p className="text-2xl font-light text-gray-500 mt-5">Utiliza este formulario para cambiar tu password</p>
+        <div className="text-center sm:mx-auto sm:w-full sm:max-w-sm">
+          <h1 className="font-semibold text-2xl leading-9 tracking-tight mt-10 text-gray-700">Cambiar Password</h1>
+          <p className="text-gray-500 mt-1 leading-6">Utiliza este formulario para cambiar tu password
+          </p>
+        </div>
 
-        <form
-          onSubmit={handleSubmit(handleChangePassword)}
-          className=" mt-14 space-y-5 bg-white shadow-lg p-10 rounded-lg"
-          noValidate
-        >
-          <div className="mb-5 space-y-3">
-            <label
-              className="text-sm uppercase font-bold"
-              htmlFor="current_password"
-            >Password Actual</label>
+        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <form
+            onSubmit={handleSubmit(handleChangePassword)}
+            className="space-y-6"
+            noValidate
+          >
+            <div>
+              <label
+                className="pl-1.5 block text-sm font-medium leading-6 text-gray-700"
+                htmlFor="current_password"
+              >Password Actual</label>
+              <div className="mt-1">
+                <input
+                  id="current_password"
+                  type="password"
+                  placeholder="Password Actual"
+                  className="block w-full rounded-lg border-0 py-1.5 pl-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-0 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  {...register("current_password", {
+                    required: "El password actual es obligatorio",
+                  })}
+                />
+              </div>
+              {errors.current_password && (
+                <ErrorMessage>{errors.current_password.message}</ErrorMessage>
+              )}
+            </div>
+
+            <div>
+              <label
+                className="pl-1.5 block text-sm font-medium leading-6 text-gray-700"
+                htmlFor="password"
+              >Nuevo Password</label>
+              <div className="mt-1">
+                <input
+                  id="password"
+                  type="password"
+                  placeholder="Nuevo Password"
+                  className="block w-full rounded-lg border-0 py-1.5 pl-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-0 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  {...register("password", {
+                    required: "El Nuevo Password es obligatorio",
+                    minLength: {
+                      value: 8,
+                      message: 'El Password debe ser mínimo de 8 caracteres'
+                    }
+                  })}
+                />
+              </div>
+              {errors.password && (
+                <ErrorMessage>{errors.password.message}</ErrorMessage>
+              )}
+            </div>
+
+            <div>
+              <label
+                htmlFor="password_confirmation"
+                className="pl-1.5 block text-sm font-medium leading-6 text-gray-700"
+              >Repetir Password</label>
+              <div className="mt-1">
+                <input
+                  id="password_confirmation"
+                  type="password"
+                  placeholder="Repetir Password"
+                  className="block w-full rounded-lg border-0 py-1.5 pl-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-0 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  {...register("password_confirmation", {
+                    required: "Este campo es obligatorio",
+                    validate: value => value === password || 'Los Passwords no son iguales'
+                  })}
+                />
+              </div>
+              {errors.password_confirmation && (
+                <ErrorMessage>{errors.password_confirmation.message}</ErrorMessage>
+              )}
+            </div>
             <input
-              id="current_password"
-              type="password"
-              placeholder="Password Actual"
-              className="w-full p-3  border border-gray-200"
-              {...register("current_password", {
-                required: "El password actual es obligatorio",
-              })}
+              type="submit"
+              value='Cambiar Password'
+              className="flex w-full justify-center rounded-md bg-cyan-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             />
-            {errors.current_password && (
-              <ErrorMessage>{errors.current_password.message}</ErrorMessage>
-            )}
-          </div>
-
-          <div className="mb-5 space-y-3">
-            <label
-              className="text-sm uppercase font-bold"
-              htmlFor="password"
-            >Nuevo Password</label>
-            <input
-              id="password"
-              type="password"
-              placeholder="Nuevo Password"
-              className="w-full p-3  border border-gray-200"
-              {...register("password", {
-                required: "El Nuevo Password es obligatorio",
-                minLength: {
-                  value: 8,
-                  message: 'El Password debe ser mínimo de 8 caracteres'
-                }
-              })}
-            />
-            {errors.password && (
-              <ErrorMessage>{errors.password.message}</ErrorMessage>
-            )}
-          </div>
-          <div className="mb-5 space-y-3">
-            <label
-              htmlFor="password_confirmation"
-              className="text-sm uppercase font-bold"
-            >Repetir Password</label>
-
-            <input
-              id="password_confirmation"
-              type="password"
-              placeholder="Repetir Password"
-              className="w-full p-3  border border-gray-200"
-              {...register("password_confirmation", {
-                required: "Este campo es obligatorio",
-                validate: value => value === password || 'Los Passwords no son iguales'
-              })}
-            />
-            {errors.password_confirmation && (
-              <ErrorMessage>{errors.password_confirmation.message}</ErrorMessage>
-            )}
-          </div>
-
-          <input
-            type="submit"
-            value='Cambiar Password'
-            className="bg-fuchsia-600 w-full p-3 text-white uppercase font-bold hover:bg-fuchsia-700 cursor-pointer transition-colors"
-          />
-        </form>
+          </form>
+        </div>
       </div>
     </>
   )
