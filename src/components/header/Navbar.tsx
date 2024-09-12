@@ -26,8 +26,7 @@ export default function Navbar() {
               <Logo />
             </Link>
           </div>
-          {/* search bar.. */}
-          <div></div>
+
           {/* right side */}
           <div className="flex gap-4 items-center flex-shrink-0">
             <button

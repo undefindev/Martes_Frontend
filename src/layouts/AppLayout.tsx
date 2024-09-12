@@ -16,12 +16,11 @@ export default function AppLayout() {
     <>
       <div className='max-h-screen mx-auto container flex flex-col'>
         <Navbar />
-
-        <main className='mx-auto container px-4 py-6 md:px-0'>
-          <Outlet />
-        </main>
-
-
+        <div className='sticky top-0 z-10 overflow-x-hidden overflow-y-scroll'>
+          <main className='mt-4'>
+            <Outlet />
+          </main>
+        </div>
       </div >
       <ToastContainer
         pauseOnHover={false}
@@ -32,3 +31,9 @@ export default function AppLayout() {
 }
 
 /* h-screen grid grid-rows-[auto_1fr] */
+
+/* 
+  className='grid grid-cols-[auto,1fr] overflow-auto'
+*/
+
+/* className='overflow-x-hidden px-4 pb-4' */

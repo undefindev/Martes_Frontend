@@ -33,8 +33,8 @@ export default function CreateProjectView() {
   return (
     <>
       <div>
-        <div className="mx-auto h-fit flex flex-1 flex-col justify-center w-96">
-          <div className="border-b border-gray-200 pb-6 mb-4">
+        <div className="mx-auto h-fit flex flex-1 flex-col justify-center border rounded-2xl">
+          <div className="px-4 sm:px-0">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm text-center">
               <h2 className="mt-10 text-2xl font-semibold leading-9 tracking-tight text-gray-700">Crear Proyecto</h2>
             </div>
@@ -62,7 +62,7 @@ export default function CreateProjectView() {
             </div>
           </div>
 
-          <div className="text-center">
+          <div className="text-center mb-10">
             <FooterShort />
           </div>
         </div>
