@@ -41,7 +41,7 @@ export default function NavMenu({ name }: NavMenueProps) {
         leaveTo="opacity-0 translate-y-1"
       >
         <Popover.Panel className="absolute bg-white left-1/2 z-20 mt-5 flex w-screen lg:max-w-min -translate-x-1/2 lg:-translate-x-48">
-          <div className="w-full lg:w-56 shrink rounded-xl p-4 text-sm font-semibold leading-6 shadow-lg ring-1">
+          <div className="w-56 shrink rounded-xl p-2 text-sm font-semibold leading-6 shadow-lg">
             <p className='text-center'>Hola: {name}</p>
             <Link
               to='/profile'

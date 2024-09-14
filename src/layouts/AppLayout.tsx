@@ -16,7 +16,8 @@ export default function AppLayout() {
     <>
       <div className='max-h-screen mx-auto container flex flex-col'>
         <Navbar />
-        <div className='sticky top-0 z-10 overflow-x-hidden overflow-y-scroll'>
+        <div className='sticky top-0 z-10 pb-4'></div>
+        <div className='overflow-hidden overflow-y-scroll'>
           <main className='mt-4'>
             <Outlet />
           </main>

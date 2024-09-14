@@ -36,10 +36,8 @@ export default function LoginView() {
   return (
     <>
       <div className="flex flex-1 flex-col justify-center w-96">
-
         {/* el borde de abajo */}
         <div className="border-b border-gray-300 pb-4 mb-4">
-
           {/* header */}
           <div className="sm:mx-auto sm:w-full sm:max-w-sm text-center">
             <h2 className="mt-10 text-2xl font-semibold leading-9 tracking-tight text-gray-700">
@@ -49,7 +47,6 @@ export default function LoginView() {
               Hola, Identificate..!!
             </p>
           </div>
-
           {/* body */}
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form
@@ -81,7 +78,6 @@ export default function LoginView() {
                   )}
                 </div>
               </div>
-
               {/* password */}
               <div>
                 <label htmlFor="password" className="pl-1.5 block text-sm font-medium leading-6 text-gray-900">
@@ -109,7 +105,6 @@ export default function LoginView() {
                   </div>
                 </div>
               </div>
-
               {/* el button */}
               <div>
                 <input
@@ -119,7 +114,6 @@ export default function LoginView() {
                 />
               </div>
             </form>
-
             <p className="mt-10 text-center text-sm text-gray-500">
               Eres Nuevo?{' '}
               <Link to={'/auth/register'} className="font-semibold leading-6 text-indigo-500 hover:text-indigo-400">

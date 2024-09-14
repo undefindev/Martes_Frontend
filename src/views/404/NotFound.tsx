@@ -11,7 +11,7 @@ export default function NotFound() {
           <p className="mt-4 text-base leading-7 text-gray-600">No pudimos encontrar la pagina que estas buscando</p>
           <div className="mt-4 flex items-center justify-center gap-x-6">
             <Link to={'/'} className="text-lg leading-7 text-purple-500">
-              &larr; <span aria-hidden="true">Regreso a Projectos</span>
+              &larr; <span aria-hidden="true">Regresar a Projectos</span>
             </Link>
           </div>
         </div>

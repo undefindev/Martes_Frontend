@@ -28,46 +28,61 @@ export default function ProjectDetailsView() {
   if (isError) return <Navigate to='/404' />
   if (data && user) return (
     <>
-      <h2 className="text-3xl text-indigo-500 font-semibold">{data.projectName}</h2>
-      <p className="w-3/4 line-clamp-2 font-light	font-style: italic text-lg text-start antialiased leading-relaxed tracking-normal text-gray-500 mt-2">
-        {data.description}
-      </p>
+      <div className="mx-auto container px-2">
+        <div className="flex flex-col">
+          {/* header */}
+          <div className="flex flex-col items-center sticky top-0 bg-white py-2">
+            <div className="flex flex-col items-center">
+              <h2 className="text-2xl font-semibold">{data.projectName}</h2>
+              <p className="font-light font-style: italic text-lg antialiased leading-relaxed tracking-normal text-gray-500">
+                {data.description}
+              </p>
+            </div>
 
-      {isManager(data.manager, user._id) && (
-        <nav className="flex gap-2 my-4">
-          <button
-            type="button"
-            onClick={() => navigate(location.pathname + '?newTask=true')}
-            className="bg-cyan-400 hover:bg-cyan-500 px-6 py-2 rounded-lg text-white font-semibold cursor-pointer transition-colors"
-          >
-            Nueva Tarea
-          </button>
+            {isManager(data.manager, user._id) && (
+              <nav className="flex my-4">
+                <button
+                  type="button"
+                  onClick={() => navigate(location.pathname + '?newTask=true')}
+                  className="text-gray-400 hover:bg-purple-400 hover:text-white
+                          rounded-md px-3 py-2 text-sm font-medium"
+                >
+                  Nueva Tarea
+                </button>
 
-          <Link
-            to={'team'}
-            className="bg-cyan-400 hover:bg-cyan-500 px-8 py-2 rounded-lg text-white font-semibold cursor-pointer transition-colors"
-          >
-            Colaboradores
-          </Link>
+                <Link
+                  to={'team'}
+                  className="text-gray-400 hover:bg-purple-400 hover:text-white
+                          rounded-md px-3 py-2 text-sm font-medium"
+                >
+                  Colaboradores
+                </Link>
 
-          <Link
-            to={'/'}
-            className="bg-cyan-400 hover:bg-cyan-500 px-6 py-2 rounded-lg text-white font-semibold cursor-pointer transition-colors"
-          >
-            Volver al Projecto
-          </Link>
-        </nav>
-      )}
+                <Link
+                  to={'/'}
+                  className="text-gray-400 hover:bg-purple-400 hover:text-white
+                          rounded-md px-3 py-2 text-sm font-medium"
+                >
+                  Volver al Projecto
+                </Link>
+              </nav>
+            )}
+          </div>
+          {/* body */}
+          <TaskList
+            tasks={data.tasks}
+            canEdit={canEdit}
+          />
 
-      <TaskList
-        tasks={data.tasks}
-        canEdit={canEdit}
-      />
+
+          <AddTaskModal />
+          <EditTaskData />
+          <TaskModalDetails />
+        </div>
+      </div>
 
 
-      <AddTaskModal />
-      <EditTaskData />
-      <TaskModalDetails />
+
     </>
   )
 }
