@@ -5,7 +5,7 @@ import { UserLoginForm } from "@/types/index";
 import ErrorMessage from "@/components/ErrorMessage";
 import { authenticateUser } from "@/api/AuthAPI";
 import { toast } from "react-toastify";
-import FooterLegal from "@/components/footer/FooterLegal";
+import Footer from "@/components/footer/Footer";
 
 export default function LoginView() {
 
@@ -110,7 +110,7 @@ export default function LoginView() {
                 <input
                   type="submit"
                   value='Iniciar Sesión'
-                  className="flex w-full justify-center rounded-md bg-cyan-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="w-full justify-center rounded-md bg-cyan-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 />
               </div>
             </form>
@@ -122,7 +122,7 @@ export default function LoginView() {
             </p>
           </div>
         </div>
-        <FooterLegal />
+        <Footer />
       </div>
     </>
   )

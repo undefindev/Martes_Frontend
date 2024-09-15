@@ -7,8 +7,6 @@ import { getProjects } from "@/api/ProjectAPI"
 import { useAuth } from '@/hooks/useAuth'
 import { isManager } from '@/utils/policies'
 import DeleteProjectModal from '@/components/projects/DeleteProjectModal'
-import { PlusIcon } from '@heroicons/react/24/outline'
-
 
 export default function DashboardView() {
 
@@ -25,21 +23,14 @@ export default function DashboardView() {
       <div className='mx-auto container px-2'>
         <div className='flex flex-col'>
           {/* top */}
-          <div className='flex items-center justify-around sticky top-0 bg-white py-2'>
+          <div className='flex items-center justify-around sticky top-0 bg-white pt-1 pb-3 z-20'>
             <h2 className="text-2xl font-semibold leading-6 tracking-tight text-gray-700">Mis Proyectos</h2>
             <nav>
               <Link
-                className="rounded-md px-4 py-2 shadow-sm text-white text-sm font-semibold bg-cyan-400 hover:bg-purple-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600  cursor-pointer transition-colors"
+                className="w-full justify-center rounded-md bg-cyan-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 to='/projects/create'
               >
                 Nuevo Proyecto
-              </Link>
-
-              <Link
-                className="sm:hidden"
-                to='/projects/create'
-              >
-                <PlusIcon className='h-8 w-8 text-cyan-400 font-semibold border border-cyan-400 rounded-full' />
               </Link>
             </nav>
           </div>

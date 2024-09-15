@@ -3,6 +3,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useAuth } from '@/hooks/useAuth'
 import Navbar from '@/components/header/Navbar'
+import Footer from '@/components/footer/Footer'
 
 export default function AppLayout() {
 
@@ -14,7 +15,7 @@ export default function AppLayout() {
 
   if (data) return (
     <>
-      <div className='max-h-screen mx-auto container flex flex-col'>
+      {/* <div className='max-h-screen mx-auto container flex flex-col'>
         <Navbar />
         <div className='sticky top-0 z-10 pb-4'></div>
         <div className='overflow-hidden overflow-y-scroll'>
@@ -22,7 +23,16 @@ export default function AppLayout() {
             <Outlet />
           </main>
         </div>
-      </div >
+      </div > */}
+
+
+      <div className='max-h-screen grid grid-rows-[auto_1fr]'>
+        <div><Navbar /></div>
+        <div className='overflow-hidden overflow-y-scroll'>
+          <Outlet />
+          <Footer />
+        </div>
+      </div>
       <ToastContainer
         pauseOnHover={false}
         pauseOnFocusLoss={false}
@@ -31,7 +41,7 @@ export default function AppLayout() {
   )
 }
 
-/* h-screen grid grid-rows-[auto_1fr] */
+/* h-screen grid grid-rows-[auto_1fr_auto] */
 
 /* 
   className='grid grid-cols-[auto,1fr] overflow-auto'
