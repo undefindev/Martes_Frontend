@@ -27,7 +27,7 @@ export default function DashboardView() {
             <h2 className="text-2xl font-semibold leading-6 tracking-tight text-gray-700">Mis Proyectos</h2>
             <nav>
               <Link
-                className="w-full justify-center rounded-md bg-cyan-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="w-full justify-center rounded-md bg-purple-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-cyan-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 to='/projects/create'
               >
                 Nuevo Proyecto
@@ -40,75 +40,73 @@ export default function DashboardView() {
             {data.length ? (
               <ul role="list">
                 {data.map((project) => (
-                  <Link to={`/projects/${project._id}`}>
-                    <li key={project._id} className="flex justify-between hover:bg-neutral-100 hover:rounded-2xl my-4">
-                      <div className="flex min-w-0 gap-x-1 px-4 py-2">
-                        <div className="min-w-0 flex-auto space-y-2">
-                          <div>
-                            {isManager(project.manager, user._id) ?
-                              <p className='font-semibold text-xs text-indigo-500'>Manager</p> :
-                              <p className='font-semibold text-xs text-cyan-500'>Colaborador</p>
-                            }
-                          </div>
-                          <div className='space-y-1'>
-                            <p
-                              className="block font-sans text-lg antialiased font-semibold leading-relaxed tracking-normal text-gray-900"
-                            >
-                              {project.projectName}
-                            </p>
-                            <p className="block font-sans text-sm antialiased font-normal leading-normal text-gray-700">
-                              Cliente: {project.clientName}
-                            </p>
-                            <p className="text-lg text-slate-600 leading-normal mt-1">
-                              {project.description}
-                            </p>
-                          </div>
+                  <li key={project._id} className="flex justify-between hover:bg-neutral-100 hover:rounded-2xl my-4">
+                    <div className="flex min-w-0 gap-x-1 px-4 py-2">
+                      <div className="min-w-0 flex-auto space-y-2">
+                        <div>
+                          {isManager(project.manager, user._id) ?
+                            <p className='font-semibold text-xs text-indigo-500'>Manager</p> :
+                            <p className='font-semibold text-xs text-cyan-500'>Colaborador</p>
+                          }
+                        </div>
+                        <div className='space-y-1'>
+                          <Link to={`/projects/${project._id}`}
+                            className="block font-sans text-lg antialiased font-semibold leading-relaxed tracking-normal text-gray-900"
+                          >
+                            {project.projectName}
+                          </Link>
+                          <p className="block font-sans text-sm antialiased font-normal leading-normal text-gray-700">
+                            Cliente: {project.clientName}
+                          </p>
+                          <p className="text-lg text-slate-600 leading-normal mt-1">
+                            {project.description}
+                          </p>
                         </div>
                       </div>
-                      <div className="flex shrink-0 items-center gap-x-6">
-                        <Menu as="div" className="relative flex-none">
-                          <MenuButton className="-m-2.5 block p-2.5 text-gray-500 hover:text-gray-900">
-                            <span className="sr-only">opciones</span>
-                            <EllipsisVerticalIcon className="h-9 w-9" aria-hidden="true" />
-                          </MenuButton>
-                          <Transition as={Fragment} enter="transition ease-out duration-100"
-                            enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100"
-                            leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100"
-                            leaveTo="transform opacity-0 scale-95">
-                            <MenuItems
-                              className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-700/5 focus:outline-none"
-                            >
-                              <MenuItem>
-                                <Link to={`/projects/${project._id}`}
-                                  className='block px-3 py-1 text-sm leading-6 text-gray-900'>
-                                  Ver Proyecto
-                                </Link>
-                              </MenuItem>
-                              {isManager(project.manager, user._id) && (
-                                <>
-                                  <MenuItem>
-                                    <Link to={`/projects/${project._id}/edit`}
-                                      className='block px-3 py-1 text-sm leading-6 text-gray-900'>
-                                      Editar Proyecto
-                                    </Link>
-                                  </MenuItem>
-                                  <MenuItem>
-                                    <button
-                                      type='button'
-                                      className='block px-3 py-1 text-sm leading-6 text-red-500'
-                                      onClick={() => navigate(location.pathname + `?deleteProject=${project._id}`)}
-                                    >
-                                      Eliminar Proyecto
-                                    </button>
-                                  </MenuItem>
-                                </>
-                              )}
-                            </MenuItems>
-                          </Transition>
-                        </Menu>
-                      </div>
-                    </li>
-                  </Link>
+                    </div>
+                    <div className="flex shrink-0 items-center gap-x-6">
+                      <Menu as="div" className="relative flex-none">
+                        <MenuButton className="-m-2.5 block p-2.5 text-gray-500 hover:text-gray-900">
+                          <span className="sr-only">opciones</span>
+                          <EllipsisVerticalIcon className="h-9 w-9" aria-hidden="true" />
+                        </MenuButton>
+                        <Transition as={Fragment} enter="transition ease-out duration-100"
+                          enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100"
+                          leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100"
+                          leaveTo="transform opacity-0 scale-95">
+                          <MenuItems
+                            className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-700/5 focus:outline-none"
+                          >
+                            <MenuItem>
+                              <Link to={`/projects/${project._id}`}
+                                className='block px-3 py-1 text-sm leading-6 text-gray-900'>
+                                Ver Proyecto
+                              </Link>
+                            </MenuItem>
+                            {isManager(project.manager, user._id) && (
+                              <>
+                                <MenuItem>
+                                  <Link to={`/projects/${project._id}/edit`}
+                                    className='block px-3 py-1 text-sm leading-6 text-gray-900'>
+                                    Editar Proyecto
+                                  </Link>
+                                </MenuItem>
+                                <MenuItem>
+                                  <button
+                                    type='button'
+                                    className='block px-3 py-1 text-sm leading-6 text-red-500'
+                                    onClick={() => navigate(location.pathname + `?deleteProject=${project._id}`)}
+                                  >
+                                    Eliminar Proyecto
+                                  </button>
+                                </MenuItem>
+                              </>
+                            )}
+                          </MenuItems>
+                        </Transition>
+                      </Menu>
+                    </div>
+                  </li>
                 ))}
               </ul>
             ) : (

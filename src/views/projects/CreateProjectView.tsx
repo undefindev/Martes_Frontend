@@ -5,7 +5,6 @@ import { toast } from 'react-toastify'
 import ProjectForm from "@/components/projects/ProjectForm"
 import { ProjectFormData } from "@/types/index"
 import { createProject } from '@/api/ProjectAPI'
-import FooterShort from "@/components/footer/FooterShort"
 
 export default function CreateProjectView() {
 
@@ -32,11 +31,11 @@ export default function CreateProjectView() {
   const handleForm = (formData: ProjectFormData) => mutate(formData) // una sola linea en el arrowFunction no ocupa las llaves
   return (
     <>
-      <div>
-        <div className="mx-auto h-fit flex flex-1 flex-col justify-center border rounded-2xl">
-          <div className="px-4 sm:px-0">
+      <div className="mx-auto container w-96">
+        <div className="flex flex-1 flex-col justify-center">
+          <div className="border-b border-gray-300 pb-4 mb-4">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm text-center">
-              <h2 className="mt-10 text-2xl font-semibold leading-9 tracking-tight text-gray-700">Crear Proyecto</h2>
+              <h5 className="mt-10 text-2xl font-semibold leading-9 tracking-tight text-gray-700">Crear Proyecto</h5>
             </div>
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
               <form
@@ -50,20 +49,16 @@ export default function CreateProjectView() {
                 />
                 <div className="mt-6 flex items-center justify-end gap-x-6">
                   <Link to='/' className="text-sm font-semibold leading-6 hover:text-purple-500">
-                    Cancel
+                    Cancelar
                   </Link>
                   <input
                     type="submit"
                     value='Crear Proyecto'
-                    className="rounded-md bg-cyan-400 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    className="rounded-md bg-cyan-400 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400"
                   />
                 </div>
               </form>
             </div>
-          </div>
-
-          <div className="text-center mb-10">
-            <FooterShort />
           </div>
         </div>
       </div>
