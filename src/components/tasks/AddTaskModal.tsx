@@ -70,7 +70,7 @@ export default function AddTaskModal() {
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex min-h-full items-center justify-center p-4 text-center">
+            <div className="flex min-h-full items-center justify-center text-center">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -80,35 +80,34 @@ export default function AddTaskModal() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-4xl transform overflow-hidden rounded-2xl bg-white text-left align-middle shadow-xl transition-all p-16">
-                  <Dialog.Title
-                    as="h3"
-                    className="font-black text-4xl  my-5"
-                  >
-                    Nueva Tarea
-                  </Dialog.Title>
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white text-left align-middle transition-all px-8 py-16">
+                  <div className="text-center">
+                    <h3 className='text-2xl font-semibold leading-6 tracking-tight text-gray-700'>Nueva Tarea</h3>
+                    <p className="mt-1 leading-6 text-gray-500">
+                      Llena el formulario y crea una tarea
+                    </p>
 
-                  <p className="text-xl font-bold">Llena el formulario y crea  {''}
-                    <span className="text-fuchsia-600">una tarea</span>
-                  </p>
+                  </div>
 
-                  <form
-                    noValidate
-                    onSubmit={handleSubmit(handleCreateTask)}
-                    className='mt-8 space-y-2'
-                  >
 
-                    <TaskForm
-                      register={register}
-                      errors={errors}
-                    />
 
-                    <input
-                      type="submit"
-                      value="guardar tareas"
-                      className='w-full border rounded-lg py-2 uppercase text-xl bg-slate-900 text-white cursor-pointer transition-colors'
-                    />
-                  </form>
+                  <div className='mt-20 sm:mx-auto sm:w-full sm:max-w-sm'>
+                    <form
+                      noValidate
+                      onSubmit={handleSubmit(handleCreateTask)}
+                      className='space-y-6'
+                    >
+                      <TaskForm
+                        register={register}
+                        errors={errors}
+                      />
+                      <input
+                        type="submit"
+                        value="guardar tareas"
+                        className='flex w-full justify-center rounded-md bg-cyan-400 px-3 py-1.5 font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 capitalize'
+                      />
+                    </form>
+                  </div>
 
                 </Dialog.Panel>
               </Transition.Child>

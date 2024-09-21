@@ -15,19 +15,8 @@ export default function AppLayout() {
 
   if (data) return (
     <>
-      {/* <div className='max-h-screen mx-auto container flex flex-col'>
-        <Navbar />
-        <div className='sticky top-0 z-10 pb-4'></div>
-        <div className='overflow-hidden overflow-y-scroll'>
-          <main className='mt-4'>
-            <Outlet />
-          </main>
-        </div>
-      </div > */}
-
-
       <div className='max-h-screen grid grid-rows-[auto_1fr]'>
-        <div><Navbar /></div>
+        <Navbar />
         <div className='overflow-hidden overflow-y-scroll'>
           <Outlet />
           <Footer />
@@ -47,4 +36,3 @@ export default function AppLayout() {
   className='grid grid-cols-[auto,1fr] overflow-auto'
 */
 
-/* className='overflow-x-hidden px-4 pb-4' */

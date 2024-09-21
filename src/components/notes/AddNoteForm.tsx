@@ -44,7 +44,7 @@ export default function AddNoteForm() {
   return (
     <form
       onSubmit={handleSubmit(handleAddNote)}
-      className=""
+      className="space-y-6"
       noValidate
     >
       <div className="flex flex-col gap-2">
@@ -52,7 +52,7 @@ export default function AddNoteForm() {
         <input
           type="text"
           id="content"
-          placeholder="Crea la Maldita Nota"
+          placeholder="Crea la maldita Nota"
           className="w-full p-2 border border-gray-300 rounded-lg"
           {...register('content', {
             required: 'Escribe algo Vrga.. seas mamon..!!'
@@ -66,7 +66,7 @@ export default function AddNoteForm() {
       <input
         type="submit"
         value="Crear Nota"
-        className=" bg-cyan-500 hover:cyan-700 w-full p-2 text-white font-semibold rounded-lg mt-4"
+        className=" flex w-full justify-center rounded-md bg-cyan-400 px-3 py-1.5 font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
       />
     </form>
   )

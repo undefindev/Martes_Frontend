@@ -10,16 +10,16 @@ type TaskFormProps = {
 export default function TaskForm({ errors, register }: TaskFormProps) {
   return (
     <>
-      <div className="flex flex-col gap-5">
+      <div>
         <label
-          className="font-normal text-2xl"
+          className="pl-1.5 block text-sm font-medium leading-6 text-gray-500"
           htmlFor="name"
         >Nombre de la tarea</label>
         <input
           id="name"
           type="text"
           placeholder="Nombre de la tarea"
-          className="w-full p-3  border-gray-300 border"
+          className="block w-full rounded-lg border-0 py-1.5 pl-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-0 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
           {...register("name", {
             required: "El nombre de la tarea es obligatorio",
           })}
@@ -29,15 +29,15 @@ export default function TaskForm({ errors, register }: TaskFormProps) {
         )}
       </div>
 
-      <div className="flex flex-col gap-5">
+      <div>
         <label
-          className="font-normal text-2xl"
+          className="pl-1.5 block text-sm font-medium leading-6 text-gray-500"
           htmlFor="description"
         >Descripción de la tarea</label>
         <textarea
           id="description"
           placeholder="Descripción de la tarea"
-          className="w-full p-3  border-gray-300 border"
+          className="block w-full rounded-lg border-0 py-1.5 pl-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-0 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
           {...register("description", {
             required: "La descripción de la tarea es obligatoria"
           })}

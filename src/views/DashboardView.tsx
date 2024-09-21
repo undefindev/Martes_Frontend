@@ -23,7 +23,7 @@ export default function DashboardView() {
       <div className='mx-auto container px-2'>
         <div className='flex flex-col'>
           {/* top */}
-          <div className='flex items-center justify-around sticky top-0 bg-white pt-1 pb-3 z-20'>
+          <div className='flex items-center justify-around sticky top-0 bg-white pt-1 pb-3 z-10'>
             <h2 className="text-2xl font-semibold leading-6 tracking-tight text-gray-700">Mis Proyectos</h2>
             <nav>
               <Link

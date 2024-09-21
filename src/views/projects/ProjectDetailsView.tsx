@@ -8,6 +8,7 @@ import TaskModalDetails from "@/components/tasks/TaskModalDetails"
 import { useAuth } from "@/hooks/useAuth"
 import { isManager } from "@/utils/policies"
 import { useMemo } from "react"
+import { ArrowUturnLeftIcon, PlusIcon, UsersIcon } from "@heroicons/react/24/outline"
 
 export default function ProjectDetailsView() {
 
@@ -40,30 +41,20 @@ export default function ProjectDetailsView() {
             </div>
 
             {isManager(data.manager, user._id) && (
-              <nav className="flex my-4">
+              <nav className="flex items-center gap-2 lg:gap-4 my-4">
                 <button
                   type="button"
                   onClick={() => navigate(location.pathname + '?newTask=true')}
-                  className="text-gray-400 hover:bg-purple-400 hover:text-white
-                          rounded-md px-3 py-2 text-sm font-medium"
                 >
-                  Nueva Tarea
+                  <PlusIcon className="h-5 w-5 text-gray-400 hover:text-purple-500" />
                 </button>
 
-                <Link
-                  to={'team'}
-                  className="text-gray-400 hover:bg-purple-400 hover:text-white
-                          rounded-md px-3 py-2 text-sm font-medium"
-                >
-                  Colaboradores
+                <Link to={'team'}>
+                  <UsersIcon className="h-5 w-5 text-gray-400 hover:text-purple-500" />
                 </Link>
 
-                <Link
-                  to={'/'}
-                  className="text-gray-400 hover:bg-purple-400 hover:text-white
-                          rounded-md px-3 py-2 text-sm font-medium"
-                >
-                  Volver al Projecto
+                <Link to={'/'}>
+                  <ArrowUturnLeftIcon className="h-5 w-5 text-gray-400 hover:text-purple-500" />
                 </Link>
               </nav>
             )}
