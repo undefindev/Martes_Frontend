@@ -90,14 +90,14 @@ export default function DeleteProjectModal() {
 
                   <div className="flex flex-col gap-2">
                     <label
-                      className="font-normal text-sm"
+                      className="pl-1.5 block text-sm font-medium leading-6 text-gray-700"
                       htmlFor="password"
                     >Password</label>
                     <input
                       id="password"
                       type="password"
                       placeholder="Password Inicio de Sesión"
-                      className="w-full p-2  border-gray-300 border rounded-xl"
+                      className="block w-full rounded-lg border-0 py-1.5 pl-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-0 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       {...register("password", {
                         required: "El password es obligatorio",
                       })}
@@ -109,7 +109,7 @@ export default function DeleteProjectModal() {
 
                   <input
                     type="submit"
-                    className=" bg-cyan-500 hover:bg-cyan-600 w-full p-2  text-white font-semibold text-xl cursor-pointer rounded-xl"
+                    className="flex w-full justify-center rounded-md bg-cyan-400 px-3 py-1.5 font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     value='Eliminar Proyecto'
                   />
                 </form>

@@ -51,14 +51,14 @@ export default function DashboardView() {
                         </div>
                         <div className='space-y-1'>
                           <Link to={`/projects/${project._id}`}
-                            className="block font-sans text-lg antialiased font-semibold leading-relaxed tracking-normal text-gray-900"
+                            className="block text-gray-900"
                           >
                             {project.projectName}
                           </Link>
-                          <p className="block font-sans text-sm antialiased font-normal leading-normal text-gray-700">
+                          <p className="block font-sans text-sm antialiased font-normal leading-normal text-gray-500">
                             Cliente: {project.clientName}
                           </p>
-                          <p className="text-lg text-slate-600 leading-normal mt-1">
+                          <p className="text-base text-gray-700 mt-1">
                             {project.description}
                           </p>
                         </div>

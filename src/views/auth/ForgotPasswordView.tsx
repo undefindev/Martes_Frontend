@@ -50,7 +50,7 @@ export default function ForgotPasswordView() {
             >
               <div>
                 <label
-                  className="pl-1.5 block text-sm font-medium leading-6 text-gray-700"
+                  className="pl-1.5 block text-sm leading-6 text-gray-700"
                   htmlFor="email"
                 >email</label>
                 <div className="mt-1">

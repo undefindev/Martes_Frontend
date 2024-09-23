@@ -56,7 +56,7 @@ export default function LoginView() {
             >
               {/* email */}
               <div>
-                <label htmlFor="email" className="pl-1.5 block text-sm font-medium leading-6 text-gray-700">
+                <label htmlFor="email" className="pl-1.5 block text-sm leading-6 text-gray-700">
                   Email
                 </label>
                 <div className="mt-1">
@@ -80,7 +80,7 @@ export default function LoginView() {
               </div>
               {/* password */}
               <div>
-                <label htmlFor="password" className="pl-1.5 block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="password" className="pl-1.5 block text-sm leading-6 text-gray-700">
                   Password
                 </label>
                 <div className="mt-1">

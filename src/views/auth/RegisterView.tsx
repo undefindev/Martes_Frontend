@@ -61,7 +61,7 @@ export default function RegisterView() {
               <div>
                 <label
                   htmlFor="email"
-                  className="pl-1.5 block text-sm font-medium leading-6 text-gray-700">Email</label>
+                  className="pl-1.5 block text-sm leading-6 text-gray-700">Email</label>
                 <div className="mt-1">
                   <input
                     id="email"
@@ -84,7 +84,7 @@ export default function RegisterView() {
 
               {/* nombre */}
               <div>
-                <label className="pl-1.5 block text-sm font-medium leading-6 text-gray-900">Nombre de Usuario</label>
+                <label className="pl-1.5 block text-sm leading-6 text-gray-700">Nombre de Usuario</label>
                 <div className="mt-1">
                   <input
                     type="name"
@@ -102,7 +102,7 @@ export default function RegisterView() {
 
               {/* password */}
               <div>
-                <label className="pl-1.5 block text-sm font-medium leading-6 text-gray-900">Contraseña</label>
+                <label className="pl-1.5 block text-sm leading-6 text-gray-700">Contraseña</label>
                 <div className="mt-1">
                   <input
                     type="password"
@@ -124,7 +124,7 @@ export default function RegisterView() {
 
               {/* repetir password */}
               <div>
-                <label className="pl-1.5 block text-sm font-medium leading-6 text-gray-900">Repite contraseña</label>
+                <label className="pl-1.5 block text-sm leading-6 text-gray-700">Repite contraseña</label>
                 <div className="mt-1">
                   <input
                     id="password_confirmation"
