@@ -35,7 +35,7 @@ export default function LoginView() {
 
   return (
     <>
-      <div className="flex flex-1 flex-col justify-center max-w-sm md:w-96">
+      <div className="flex flex-1 flex-col justify-center my-8 mx-3 sm:my-0 sm:mx-2">
         {/* el borde de abajo */}
         <div className="border-b border-gray-300 pb-4 mb-4">
           {/* header */}

@@ -30,7 +30,7 @@ export default function ForgotPasswordView() {
 
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center w-96">
+      <div className="flex min-h-full flex-1 flex-col justify-center my-8 mx-3 sm:my-0 sm:mx-2">
 
         <div className="border-b border-gray-300 pb-4 mb-4">
           {/* header */}
@@ -57,7 +57,7 @@ export default function ForgotPasswordView() {
                   <input
                     id="email"
                     type="email"
-                    placeholder="email de Registro"
+                    placeholder="email de registro"
                     className="block w-full rounded-lg border-0 py-1.5 pl-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-0 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     {...register("email", {
                       required: "El Email de registro es obligatorio",
@@ -78,7 +78,7 @@ export default function ForgotPasswordView() {
                 <input
                   type="submit"
                   value='Enviar Instrucciones'
-                  className="w-full justify-center rounded-md bg-cyan-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="w-full justify-center rounded-md bg-cyan-400 px-3 py-1.5 font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 />
               </div>
             </form>

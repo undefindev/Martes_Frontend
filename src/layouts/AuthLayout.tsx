@@ -6,12 +6,13 @@ export default function AuthLayout() {
 
     <>
       <div className="min-h-screen flex items-center justify-center">
-        <div>
-          <div>
+        <div className="mx-auto w-96">
+          <div className="overflow-hidden">
             <Outlet />
           </div>
         </div>
       </div>
+
       <ToastContainer
         pauseOnHover={false}
         pauseOnFocusLoss={false}

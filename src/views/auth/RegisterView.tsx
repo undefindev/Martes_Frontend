@@ -38,13 +38,13 @@ export default function RegisterView() {
 
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center w-96">
+      <div className="flex flex-1 flex-col justify-center my-8 mx-3 sm:my-0 sm:mx-2">
 
         <div className="border-b border-gray-300 pb-4 mb-4">
 
           {/* header */}
           <div className="sm:mx-auto sm:w-full sm:max-w-sm text-center">
-            <h2 className="mt-10 text-2xl font-semibold leading-9 tracking-tight text-gray-700">Crear Cuenta</h2>
+            <h2 className="text-2xl font-semibold leading-9 tracking-tight text-gray-700">Crear Cuenta</h2>
             <p className="mt-1 leading-6 text-gray-500">
               Gusto en conocerte, Ingresa tus Datos..!!
             </p>
@@ -147,7 +147,7 @@ export default function RegisterView() {
                 <input
                   type="submit"
                   value='Registrarme'
-                  className="w-full justify-center rounded-md bg-cyan-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="w-full justify-center rounded-md bg-cyan-400 px-3 py-1.5 font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 />
               </div>
             </form >

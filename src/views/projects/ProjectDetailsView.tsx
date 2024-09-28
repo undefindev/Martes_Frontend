@@ -32,7 +32,7 @@ export default function ProjectDetailsView() {
       <div className="mx-auto container px-2">
         <div className="flex flex-col">
           {/* header */}
-          <div className="flex flex-col items-center sticky top-0 bg-white py-2">
+          <div className="flex flex-col items-center sticky top-0 bg-white">
             <div className="flex flex-col items-center">
               <h2 className="text-2xl font-semibold">{data.projectName}</h2>
               <p className="font-light font-style: italic text-lg antialiased leading-relaxed tracking-normal text-gray-500">
@@ -41,7 +41,7 @@ export default function ProjectDetailsView() {
             </div>
 
             {isManager(data.manager, user._id) && (
-              <nav className="flex items-center gap-2 lg:gap-4 my-4">
+              <nav className="flex items-center gap-2 lg:gap-4 my-2">
                 <button
                   type="button"
                   onClick={() => navigate(location.pathname + '?newTask=true')}

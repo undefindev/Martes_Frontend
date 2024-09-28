@@ -27,7 +27,7 @@ export default function DashboardView() {
             <h2 className="text-2xl font-semibold leading-6 tracking-tight text-gray-700">Mis Proyectos</h2>
             <nav>
               <Link
-                className="w-full justify-center rounded-md bg-purple-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-cyan-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="w-full justify-center rounded-md bg-cyan-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 to='/projects/create'
               >
                 Nuevo Proyecto
@@ -110,10 +110,10 @@ export default function DashboardView() {
                 ))}
               </ul>
             ) : (
-              <p className="text-center py-20">No hay proyectos aún {''}
+              <p className="text-center py-20">Mas Triste.. {''}
                 <Link
                   to='/projects/create'
-                  className=" text-fuchsia-500 font-bold"
+                  className=" text-fuchsia-400 font-bold"
                 >Crear Proyecto</Link>
               </p>
             )}

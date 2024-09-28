@@ -89,7 +89,7 @@ export default function TaskList({ tasks, canEdit }: TaskListProps) {
 
   return (
     <>
-      <div className="m-4 md:m-0">
+      <div className="m-2 md:m-0">
         <h2 className="text-xl md:text-2xl font-sans antialiased font-semibold leading-relaxed tracking-normal text-gray-900">Tareas</h2>
         <div className='flex flex-col gap-4 md:flex-row overflow-x-scroll 2xl:overflow-auto pb-32'>
           <DndContext onDragEnd={handleDragEnd}>
